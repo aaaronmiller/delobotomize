@@ -8,10 +8,13 @@ pnpm-lock.yaml
 dist/
 build/
 *.tsbuildinfo
+*.js.map
 
 # Testing
 coverage/
 .nyc_output/
+*.test.js
+*.spec.js
 
 # IDE
 .vscode/
@@ -19,9 +22,15 @@ coverage/
 *.swp
 *.swo
 *~
+.history/
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Logs
@@ -29,19 +38,102 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
 
-# Environment
+# Environment variables
 .env
 .env.local
 .env.*.local
+.env.development
+.env.test
+.env.production
 
 # Temporary files
 tmp/
 temp/
 *.tmp
+*.bak
+*.swp
+.cache/
+
+# Delobotomize generated files (user-specific)
+.delobotomize/
+!.delobotomize/.gitkeep
+
+# User-specific memory snapshots (private data)
+.delobotomize/memory/
+.delobotomize/backups/
+.delobotomize/triage-report-*
+
+# Keep example outputs for documentation
+!.delobotomize-example/
 
 # Analysis artifacts (keep in repo for reference)
 !analysis/
 
-# Example outputs (for documentation)
-!.delobotomize-example/
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variable files
+.env.backup
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Next.js build output (if applicable)
+.next/
+out/
+
+# Nuxt.js build / generate output (if applicable)
+.nuxt
+dist
+
+# Gatsby files (if applicable)
+.cache/
+public
+
+# Serverless directories (if applicable)
+.serverless/
+
+# FuseBox cache (if applicable)
+.fusebox/
+
+# DynamoDB Local files (if applicable)
+.dynamodb/
+
+# TernJS port file (if applicable)
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Yarn Integrity file
+.yarn-integrity

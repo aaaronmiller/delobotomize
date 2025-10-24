@@ -1,0 +1,220 @@
+# Symptom Detection Rules
+# Tier 1 Component - Critical Priority (29/30 points)
+# Externalized for easy iteration optimization
+
+syntax_version: "1.0"
+author: Delobotomize
+last_updated: 2025-01-20
+
+#============================================
+# CRITICAL SYMPTOMS
+#============================================
+critical_symptoms:
+  - id: broken_contract
+    name: "API Contract Violation"
+    description: "Function signatures or API endpoints changed without backward compatibility"
+    weight: 10
+    patterns:
+      - regex: "export (function|interface|class)\s+(\w+)"
+        requires:
+          - search_for_callers: true
+          - check_migration: true
+      - regex: "@(?:Path|Get|Post|Put|Delete)\('[^']*')"
+        requires:
+          - check_openapi_schema: true
+    detection_rules:
+      - if: function_exports_changed AND no_migration_file
+        confidence: 0.95
+      - if: endpoint_route_changed AND no_version_bump
+        confidence: 0.90
+    false_positive_checks:
+      - is_internal_api: true
+      - has_jSDoc_deprecation: true
+
+  - id: broken_auth
+    name: "Authentication/Authorization Pattern Broken"
+    description: "Inconsistent auth patterns across the application"
+    weight: 10
+    patterns:
+      - type: auth_middleware_usage
+      - type: permission_check_pattern
+    detection_rules:
+      - if: multiple_auth_patterns AND same_layer
+        confidence: 0.85
+      - if: open_endpoint_without_reason
+        confidence: 0.90
+    remediation_priority: 1
+
+  - id: database_schema_drift
+    name: "Database Schema Inconsistency"
+    description: "Schema changes without proper migration"
+    weight: 9
+    patterns:
+      - type: model_definition_change
+      - type: migration_file_check
+    detection_rules:
+      - if: model_changed AND no_migration
+        confidence: 0.95
+      - if: migration_missing_rollback
+        confidence: 0.80
+
+  - id: test_coverage_below_threshold
+    name: "Insufficient Test Coverage"
+    description: "Less than 40% test coverage"
+    weight: 8
+    thresholds:
+      coverage: 40
+    detection_rules:
+      - if: coverage_percentage < threshold
+        confidence: 0.95
+    false_positive_checks:
+      - is_documentation_only: true
+      - is_prototype_project: true
+
+#============================================
+# HIGH SYMPTOMS
+#============================================
+high_symptoms:
+  - id: stale_todos
+    name: "Stale TODO Comments"
+    description: "TODOs older than 1 week"
+    weight: 5
+    settings:
+      max_age_days: 7
+    detection_rules:
+      - if: todo_comment_age > max_age_days
+        confidence: 0.70
+    patterns:
+      - regex: "(TODO|FIXME|HACK|XXX)(.*)"
+        extract: date_context
+
+  - id: architectural_violation
+    name: "Architectural Pattern Violation"
+    description: "Mixed architectural patterns in same contextual domain"
+    weight: 6
+    pattern_sets:
+      mvc: ["controller", "model", "view"]
+      microservice: ["service", "repository", "dto"]
+      clean_architecture: ["usecase", "repository", "presenter"]
+    detection_rules:
+      - if: patterns_from_different_sets_in_same_layer
+        confidence: 0.75
+      - if: dependency_direction_violation
+        confidence: 0.85
+
+  - id: duplicate_functionality
+    name: "Functionality Duplication"
+    description: "Same functionality implemented multiple times"
+    weight: 5
+    detection_rules:
+      - if: function_signature_similarity > 0.8 AND content_similarity > 0.7
+        confidence: 0.80
+      - if: similar_endpoints_with_different_names
+        confidence: 0.90
+
+#============================================
+# MEDIUM SYMPTOMS
+#============================================
+medium_symptoms:
+  - id: inconsistent_error_handling
+    name: "Inconsistent Error Handling"
+    description: "Different error handling patterns in similar contexts"
+    weight: 3
+    patterns:
+      - type: try_catch_usage
+      - type: error_response_format
+    detection_rules:
+      - if: mixed_error_handling_in_same_layer
+        confidence: 0.65
+
+  - id: missing_documentation
+    name: "Missing Documentation"
+    description: "Complex functions without documentation"
+    weight: 2
+    thresholds:
+      complexity_lines: 20
+    detection_rules:
+      - if: function_lines > threshold AND no_documentation
+        confidence: 0.70
+
+#============================================
+# FALSE POSITIVE FILTERS
+#============================================
+false_positive_filters:
+  development_tools:
+    - "**/test/**"
+    - "**/spec/**"
+    - "**/mock/**"
+    - "**/fixture/**"
+
+  generated_code:
+    - "**/node_modules/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/coverage/**"
+
+  configuration_files:
+    - "*.config.js"
+    - "*.config.ts"
+    - "package.json"
+    - "tsconfig.json"
+
+#============================================
+# DETECTION CONFIGURATION
+#============================================
+detection_config:
+  confidence_threshold: 0.70
+  parallel_processing: true
+  max_files_to_scan: 1000
+
+  weights:
+    critical_multiplier: 3.0
+    high_multiplier: 2.0
+    medium_multiplier: 1.0
+    low_multiplier: 0.5
+
+  severity_mapping:
+    critical: [90, 100]
+    high: [70, 89]
+    medium: [40, 69]
+    low: [0, 39]
+
+#============================================
+# OPTIMIZATION METRICS
+#============================================
+optimization_tracking:
+  metrics_to_track:
+    - rule_hit_frequency
+    - false_positive_rate
+    - detection_latency
+    - user_correction_rate
+
+  feedback_collection:
+    - annotate_false_positives
+    - missed_patterns
+    - severity_misclassification
+
+  iteration_triggers:
+    - false_positive_rate > 0.20
+    - user_corrections > 10
+    - new_pattern_identified
+
+#=============================================
+# DOCUMENTATION FOR ITERATION
+#=============================================
+iteration_notes:
+  v1.0_initial_release:
+    - "Base symptom rules from Phase 0 extraction analysis"
+    - "Focus on most common failure patterns"
+    - "Conservative confidence thresholds to avoid noise"
+
+  planned_improvements:
+    v1.1:
+      - "Add machine learning for pattern similarity"
+      - "Implement context-aware severity weighting"
+      - "Include git history in analysis"
+
+    v1.2:
+      - "Add custom rule definitions per project type"
+      - "Implement gradual learning from user corrections"
+      - "Cross-project pattern recognition"

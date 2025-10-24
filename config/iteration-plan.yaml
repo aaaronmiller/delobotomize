@@ -1,0 +1,395 @@
+# Iterative Design Configuration
+# Strategic allocation of post-MVP optimization budget
+
+project: delobotomize
+version: 0.1.0
+
+#============================================
+# ITERATIVE DESIGN STRATEGY
+#============================================
+iterative_design:
+  philosophy: |
+    Components are evaluated for their ROI in post-MVP iteration.
+    High-scoring components receive dedicated optimization budget.
+
+  scoring_criteria:
+    - modification_cost        # 5 points max (lower cost = higher score)
+    - impact_on_ux          # 5 points max (higher impact = higher score)
+    - feedback_signal_quality # 5 points max (better signals = higher score)
+    - failure_cost          # 5 points max (higher cost = higher score)
+    - usage_frequency       # 5 points max (more frequent = higher score)
+    - complexity            # 5 points max (more complex = higher score)
+
+  priority_thresholds:
+    critical: ">= 25 points"
+    high: ">= 20 points"
+    medium: ">= 15 points"
+    low: "< 15 points"
+    core_stability: "High impact but low iterability"
+
+#============================================
+# SCORED COMPONENTS
+#============================================
+components:
+  #------------------------------------------
+  # TIER 1: CRITICAL (60% iteration budget)
+  #------------------------------------------
+  - id: diagnostic_system_prompt
+    type: NATURAL_LANGUAGE
+    path: prompts/core/diagnostic-analysis.md
+    module: src/core/diagnostic-engine.ts
+    scores:
+      modification_cost: 5      # Just edit markdown
+      impact_on_ux: 5           # Determines diagnostic accuracy
+      feedback_signal: 4        # Can measure precision/recall
+      failure_cost: 5           # Wrong diagnosis = wasted effort
+      usage_frequency: 5        # Every analysis
+      complexity: 4             # Nuanced pattern recognition
+    total_score: 28
+    priority: CRITICAL
+    iteration_strategy:
+      cadence: MONTHLY
+      budget_allocation: 20%
+      metrics:
+        - diagnostic_accuracy
+        - false_positive_rate
+        - user_satisfaction
+      ab_test: true
+      instrumentation:
+        - log_diagnostic_confidence
+        - track_outcome_accuracy
+
+  - id: symptom_detection_rules
+    type: DECLARATIVE_LOGIC
+    path: rules/symptoms.yaml
+    module: src/core/symptom-detector.ts
+    scores:
+      modification_cost: 5      # Edit YAML
+      impact_on_ux: 5           # Determines what gets flagged
+      feedback_signal: 5        # Clear FP/FN metrics
+      failure_cost: 5           # Missed symptoms = broken project
+      usage_frequency: 5        # Every scan
+      complexity: 4             # Heuristics need tuning
+    total_score: 29
+    priority: CRITICAL
+    iteration_strategy:
+      cadence: MONTHLY
+      budget_allocation: 20%
+      metrics:
+        - precision
+        - recall
+        - f1_score
+        - detection_latency
+      ab_test: true
+      instrumentation:
+        - rule_hit_counts
+        - confidence_scores
+
+  - id: pattern_analysis_algorithm
+    type: DIAGNOSTIC_SCRIPT
+    path: src/analyzers/pattern-analyzer.ts
+    module: src/analyzers/pattern-analyzer.ts
+    scores:
+      modification_cost: 4      # Edit TS (carefully)
+      impact_on_ux: 5           # Determines diagnosis quality
+      feedback_signal: 5        # Measurable accuracy
+      failure_cost: 5           # Wrong pattern = wrong remedy
+      usage_frequency: 5        # Every analysis
+      complexity: 5             # Subtle patterns
+    total_score: 29
+    priority: CRITICAL
+    iteration_strategy:
+      cadence: MONTHLY
+      budget_allocation: 15%
+      metrics:
+        - pattern_detection_rate
+        - accuracy_improvement
+        - false_discovery_rate
+      ab_test: true
+      instrumentation:
+        - pattern_confidence
+        - execution_time
+        - user_correction_rate
+
+  - id: remediation_workflow
+    type: WORKFLOW_ORCHESTRATION
+    path: workflows/remediation.yaml
+    module: src/workflows/remediation-orchestrator.ts
+    scores:
+      modification_cost: 4      # Edit YAML steps
+      impact_on_ux: 5           # Determines success rate
+      feedback_signal: 5        # Clear success/failure
+      failure_cost: 5           # Broken flow = failed fix
+      usage_frequency: 5        # Every remediation
+      complexity: 4             # Dependencies matter
+    total_score: 28
+    priority: CRITICAL
+    iteration_strategy:
+      cadence: MONTHLY
+      budget_allocation: 5%
+      metrics:
+        - success_rate
+        - time_to_remediation
+        - user_completion_rate
+      ab_test: false            # Too risky
+      instrumentation:
+        - step_completion
+        - failure_points
+        - user_intervention_count
+
+  #------------------------------------------
+  # TIER 2: HIGH (30% iteration budget)
+  #------------------------------------------
+  - id: decision_tree
+    type: DECLARATIVE_LOGIC
+    path: rules/diagnosis.yaml
+    module: src/reasoners/diagnostic-reasoner.ts
+    scores:
+      modification_cost: 5      # Edit YAML
+      impact_on_ux: 4           # Affects diagnosis path
+      feedback_signal: 4        # Can track misdiagnoses
+      failure_cost: 4           # Wrong path = wrong fix
+      usage_frequency: 5        # Every diagnosis
+      complexity: 3             # Tree logic is manageable
+    total_score: 25
+    priority: HIGH
+    iteration_strategy:
+      cadence: QUARTERLY
+      budget_allocation: 15%
+      metrics:
+        - misdiagnosis_rate
+        - path_optimization
+        - decision_accuracy
+      ab_test: true
+      instrumentation:
+        - node_traversal
+        - decision_confidence
+
+  - id: test_fixtures
+    type: TEST_INFRASTRUCTURE
+    path: tests/fixtures/
+    module: tests/framework/test-data.ts
+    scores:
+      modification_cost: 4      # Add test cases
+      impact_on_ux: 3           # Indirect via reliability
+      feedback_signal: 4        # Can measure edge case coverage
+      failure_cost: 3           # Missing tests = bugs in production
+      usage_frequency: 4        # Every test run
+      complexity: 4             # Need realistic test data
+    total_score: 22
+    priority: HIGH
+    iteration_strategy:
+      cadence: QUARTERLY
+      budget_allocation: 10%
+      metrics:
+        - edge_case_coverage
+        - bug_detection_rate
+        - regression_prevention
+      ab_test: false
+      instrumentation:
+        - test_execution_time
+        - coverage_analysis
+
+  - id: cli_prompts
+    type: UX_FLOW
+    path: prompts/ux/
+    module: src/cli/interactive-handler.ts
+    scores:
+      modification_cost: 4      # Edit prompt files
+      impact_on_ux: 4           # Direct user interaction
+      feedback_signal: 3        # Need explicit feedback
+      failure_cost: 3           # Confusing prompts = frustration
+      usage_frequency: 5        # Every command
+      complexity: 3             # UX is subjective
+    total_score: 22
+    priority: HIGH
+    iteration_strategy:
+      cadence: QUARTERLY
+      budget_allocation: 5%
+      metrics:
+        - user_completion_rate
+        - task_success_time
+        - user_satisfaction_score
+      ab_test: false
+      instrumentation:
+        - prompt_response_time
+        - user_input_patterns
+
+  #------------------------------------------
+  # TIER 3: MEDIUM (10% iteration budget)
+  #------------------------------------------
+  - id: error_messages
+    type: NATURAL_LANGUAGE
+    path: errors/messages.yaml
+    module: src/errors/error-formatter.ts
+    scores:
+      modification_cost: 4      # Edit strings
+      impact_on_ux: 3           # Affects user understanding
+      feedback_signal: 2        # Need user feedback
+      failure_cost: 2           # Can work around
+      usage_frequency: 3        # Only on errors
+      complexity: 2             # Simple messages
+    total_score: 16
+    priority: MEDIUM
+    iteration_strategy:
+      cadence: AS_NEEDED
+      budget_allocation: 5%
+      metrics:
+        - user_clarity_rating
+        - support_ticket_reduction
+      ab_test: false
+      instrumentation:
+        - error_frequency
+        - user_suppression_rate
+
+  - id: config_schema
+    type: DECLARATIVE_LOGIC
+    path: schemas/project.json
+    module: src/config/validator.ts
+    scores:
+      modification_cost: 4      # Add fields
+      impact_on_ux: 2           # Flexibility vs complexity
+      feedback_signal: 3        # Feature requests are clear
+      failure_cost: 2           # Workarounds exist
+      usage_frequency: 4        # Setup phase
+      complexity: 2             # Schema design known
+    total_score: 17
+    priority: MEDIUM
+    iteration_strategy:
+      cadence: AS_NEEDED
+      budget_allocation: 5%
+      metrics:
+        - feature_request_frequency
+        - validation_error_rate
+      ab_test: false
+      instrumentation:
+        - config_load_time
+        - validation_success_rate
+
+  #------------------------------------------
+  # TIER 4: LOW (0% iteration budget)
+  #------------------------------------------
+  - id: code_formatters
+    type: DIAGNOSTIC_SCRIPT
+    path: utils/format.ts
+    module: src/utils/format.ts
+    scores:
+      modification_cost: 3      # Edit function
+      impact_on_ux: 1           # Cosmetic
+      feedback_signal: 2        # Subtle
+      failure_cost: 1           # Doesn't break
+      usage_frequency: 3        # Output generation
+      complexity: 2             # Well-understood
+    total_score: 12
+    priority: LOW
+    iteration_strategy:
+      cadence: NEVER
+      budget_allocation: 0%
+      note: "Fix during build, then leave alone"
+
+  - id: logging_configuration
+    type: CONFIGURATION
+    path: config/logging.yaml
+    module: src/utils/logger.ts
+    scores:
+      modification_cost: 5      # Edit config
+      impact_on_ux: 2           # Debugging aid
+      feedback_signal: 2        # Need observation
+      failure_cost: 1           | Doesn't break
+      usage_frequency: 2        | When debugging
+      complexity: 1             | Simple
+    total_score: 13
+    priority: LOW
+    iteration_strategy:
+      cadence: NEVER
+      budget_allocation: 0%
+      note: "Only fix when broken"
+
+  #------------------------------------------
+  # TIER 5: CORE (optimize once, stabilize)
+  #------------------------------------------
+  - id: main_orchestrator
+    type: CORE_LOGIC
+    path: src/core/orchestrator.ts
+    module: src/core/orchestrator.ts
+    scores:
+      modification_cost: 1      # High cost - requires testing
+      impact_on_ux: 5           # Core functionality
+      feedback_signal: 4        # Integration tests
+      failure_cost: 5           | Breaks everything
+      usage_frequency: 5        | Always
+      complexity: 5             | High coupling
+    total_score: 25
+    priority: CORE_STABILITY
+    iteration_strategy:
+      cadence: NEVER_POST_MVP
+      budget_allocation: 0%
+      note: "Heavy testing before MVP. Avoid changes post-launch."
+      development_focus:
+        - comprehensive unit tests
+        - integration testing
+        - performance profiling
+        - error handling coverage
+
+#============================================
+# IMPLEMENTATION REQUIREMENTS
+#============================================
+implementation_requirements:
+  # All Tier 1-3 components must be modularized
+  modularization_rules:
+    - Separate logic from data
+    - Externalize natural language content
+    - Use inversion of control
+    - Provide clear interfaces
+    - Enable hot-reloading where possible
+
+  # All high-ROI components need instrumentation
+  instrumentation_rules:
+    - Log decision points
+    - Track performance metrics
+    - Capture user interactions
+    - Measure success/failure rates
+    - Enable A/B testing infrastructure
+
+#============================================
+# POST-MVP ROADMAP
+#============================================
+post_mvp_roadmap:
+  month_1:
+    focus: "Baseline metrics for Tier 1 components"
+    actions:
+      - Deploy instrumentation
+      - Collect usage data
+      - Establish performance baselines
+      - No optimizations yet
+
+  months_2_3:
+    focus: "Optimize symptom detection rules"
+    actions:
+      - Analyze false positives/negatives
+      - Generate 3 rule variants
+      - A/B test with 20% traffic
+      - Promote winning variant
+      - Document learnings
+
+  months_4_6:
+    focus: "Improve diagnostic system prompt"
+    actions:
+      - Analyze diagnostic accuracy
+      - Test prompt variations with synthetic data
+      - Deploy best variant
+      - Measure improvement
+
+  quarter_2:
+    focus: "Tier 2 optimizations"
+    actions:
+      - Review decision tree performance
+      - Expand test fixtures
+      - Refine CLI prompts based on usage
+
+  ongoing:
+    focus: "Continuous opportunistic improvements"
+    actions:
+      - Fix error messages based on feedback
+      - Extend config schema for features
+      - Monitor and maintain baseline performance

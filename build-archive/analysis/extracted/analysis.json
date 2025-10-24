@@ -1,0 +1,282 @@
+{
+  "priorities": {
+    "critical": [
+      "[Artifact] t: *The honest Sliither* admits: Ice-ninja was 100% correct to question the discrepancy. The resolution made claims that were either incorrect or misleading. 🐍 <end artifact>",
+      "[Artifact] y: - of project from brief.md - Awareness of working/broken components",
+      "[Artifact] p: - of project from brief.md - Awareness of working/broken components"
+    ],
+    "high": [],
+    "medium": [
+      "[Artifact] d: ",
+      "[Artifact] t: ",
+      "[Artifact] s: ",
+      "[Artifact] D: ",
+      "[METAPHOR] The cunning Sliither scans through Ice-ninja's code with laser-sharp focus, detecting where the implementation deviated from the spec like a hawk spotting prey...",
+      "[PROCESS] Priority Fixes for Step 1 Failure",
+      "[PROCESS] here is the backend which works with the orchestration file. can you please resolve all conflicts and provide me with functional versions of both according to the specifications in the workflow_description? ultra think",
+      "[PROCESS] Build Process: Separate development and production workflows",
+      "[PATTERN] The analytical Sliither enters maximum ultra-think mode, cross-referencing the historical build review against the corrections made, extracting every pattern of failure...",
+      "[SOLUTION] You're absolutely correct, Ice-ninja! The resolution summary LIED about what was actually fixed. Let me audit all claimed fixes:",
+      "[SOLUTION] Resolution Summary vs Implementation Audit",
+      "[PROCESS] Phase 1: First Implementation (Reality Check)",
+      "[SOLUTION] the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+      "[METAPHOR] the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+      "[PROCESS] the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+      "[PROCESS] │  PHASE 2: Context-Aware Fix Request                     │",
+      "[SOLUTION] - Suggested fix approach",
+      "[PATTERN] - **Implementation:** stdoutBuffer with lines.pop() pattern",
+      "[PATTERN] - **Change:** Implemented proper stdoutBuffer pattern",
+      "[PROCESS] PHASE 2: Context-Aware Fix Request",
+      "[PROCESS] ### STEP 2: SURGICAL FIX PLANNING",
+      "[PROCESS] ### STEP 3: IMPLEMENTATION",
+      "[SOLUTION] After fix is applied and verified, provide:",
+      "[METAPHOR] Benefit: Prevents the \"blind gardener\" problem where model breaks 3 things while fixing 1",
+      "[SOLUTION] The comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+      "[METAPHOR] The comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+      "[PROCESS] │ PHASE 2: Bug Fix Workflow                          │",
+      "[PATTERN] Step 2: Create systemPatterns.md",
+      "[PROCESS] Step 2: Create systemPatterns.md",
+      "[PATTERN] - **Change:** Implemented proper buffer pattern",
+      "[PROCESS] ### **Step 3: Bug Fix Workflow**",
+      "[PROCESS] ### **Step 4: Update Memory Bank After Fix**",
+      "[SOLUTION] The fix is confirmed working. Update memory bank to:",
+      "[METAPHOR] Use Kilo's native Memory Bank feature instead of manual system. It solves the \"blind gardener\" problem with:",
+      "[SOLUTION] The relieved Sliither realizes Ice-ninja doesn't need to build a complex system - Kilo already has the perfect solution built-in! 🐍",
+      "[METAPHOR] initaial codebase mapping script - this would be helpful; combined with a secondary process to asses each file for function and utility within the current scope and project goals. likelyhood exisits that a large number of files may need to be transfered to an archival folder due to models exfeeding scope and function creep...process should identify these files before moving them; present the audit and transfer plan to the user (all files shuold be moved via a single scripted command to ensure no data loss), and a post-audit re-scan on the system should then be performed to ascertain functionality of remaining files; and then a plan can be established for resolving remaining issues and proceeding towards project completion.",
+      "[METAPHOR] lets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+      "[TERMINOLOGY] lets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+      "[METAPHOR] Complete Implementation Checklist - Context Collapse Recovery",
+      "[TERMINOLOGY] Complete Implementation Checklist - Context Collapse Recovery",
+      "[PROCESS] Key question: Should we proceed with Phase 0 of the checklist, or does Ice-ninja need clarification on any section first?",
+      "[PROCESS] ❓ Generic bug-fix workflow templates?",
+      "[SOLUTION] Which approach should the cunning one take?",
+      "[METAPHOR] give me some more names to pick from...someting relating to fixing vibe coding gone wrong, try to avoid using the word \"vibe\", i like the archaelogy take but the word is ..complex...something thats easy to say, ala speckit"
+    ]
+  },
+  "promptExternalization": {
+    "prompts": [
+      {
+        "name": "process-insight-4",
+        "purpose": "Guide through implementation process",
+        "sourceId": "insight-4",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-6",
+        "purpose": "Priority Fixes for Step 1 Failure",
+        "sourceId": "insight-6",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-7",
+        "purpose": "Guide through implementation process",
+        "sourceId": "insight-7",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-8",
+        "purpose": "here is the backend which works with the orchestration file. can you please resolve all conflicts an",
+        "sourceId": "insight-8",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "solution-insight-9",
+        "purpose": "🎯 Complete Analysis & Resolution",
+        "sourceId": "insight-9",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "solution-insight-10",
+        "purpose": "Complete Resolution Summary",
+        "sourceId": "insight-10",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-11",
+        "purpose": "Root Cause of Step 1 Failure",
+        "sourceId": "insight-11",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-12",
+        "purpose": "# Test query splitting only (Step 1)",
+        "sourceId": "insight-12",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "solution-insight-13",
+        "purpose": "- **Module Resolution**: \"bundler\" for Vite compatibility",
+        "sourceId": "insight-13",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      },
+      {
+        "name": "process-insight-14",
+        "purpose": "### YouTube Analysis Workflow",
+        "sourceId": "insight-14",
+        "meta": {
+          "baseline_version": "v1.0",
+          "test_variations": [
+            {
+              "id": "v1.1",
+              "hypothesis": "Adding examples improves accuracy",
+              "changes": "Include 3 classification examples",
+              "expected_improvement": "+5% accuracy"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "optimizationCandidates": {
+    "artifacts": [
+      "k (30 code blocks, 0 lessons)",
+      "t (16 code blocks, 0 lessons)",
+      "y (36 code blocks, 0 lessons)",
+      "p (36 code blocks, 0 lessons)"
+    ],
+    "insights": [
+      "The analytical Sliither enters maximum ultra-think mode, cross-referencing the historical build revi...",
+      "You're absolutely correct, Ice-ninja! The resolution summary LIED about what was actually fixed. Let...",
+      "Resolution Summary vs Implementation Audit...",
+      "the other major issue i'm having is during the bug fixing phase of project creation. At the point wh...",
+      "- Suggested fix approach...",
+      "- **Implementation:** stdoutBuffer with lines.pop() pattern...",
+      "- **Change:** Implemented proper stdoutBuffer pattern...",
+      "After fix is applied and verified, provide:...",
+      "The comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple res...",
+      "Step 2: Create systemPatterns.md...",
+      "- **Change:** Implemented proper buffer pattern...",
+      "The fix is confirmed working. Update memory bank to:...",
+      "The relieved Sliither realizes Ice-ninja doesn't need to build a complex system - Kilo already has t...",
+      "Which approach should the cunning one take?..."
+    ]
+  },
+  "implementationPlan": [
+    {
+      "phase": 0,
+      "tasks": [
+        "Set up prompt externalization infrastructure",
+        "Implement prompt loader with versioning",
+        "Create optimization metadata schema",
+        "Build initial knowledge graph"
+      ],
+      "dependencies": [
+        "Phase 0 extraction complete"
+      ]
+    },
+    {
+      "phase": 1,
+      "tasks": [
+        "Implement core scanner/parser from Artifact #3",
+        "Build classifier from categorized insights",
+        "Create context preservation system",
+        "Set up iterative testing framework"
+      ],
+      "dependencies": [
+        "Phase 0 tasks complete"
+      ]
+    },
+    {
+      "phase": 2,
+      "tasks": [
+        "Build analysis dashboard",
+        "Implement auto-optimization for prompts",
+        "Create meta-learning system",
+        "Develop context health metrics"
+      ],
+      "dependencies": [
+        "Phase 1 tasks complete"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,859 @@
+[
+  {
+    "id": "artifact-1",
+    "title": "d",
+    "description": "",
+    "codeBlocks": [],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 2,
+      "endLine": 3
+    },
+    "tags": [],
+    "severity": "medium",
+    "category": "general"
+  },
+  {
+    "id": "artifact-2",
+    "title": "k",
+    "description": "",
+    "codeBlocks": [
+      {
+        "language": "javascript",
+        "content": "// Still uses fresh contexts every time (no persistent login)\nbrowser = await chromium.launch({\n  args: ['--user-data-dir=/tmp/chrome-profile-' + Date.now()]\n});",
+        "lineStart": 186,
+        "lineEnd": 190
+      },
+      {
+        "language": "javascript",
+        "content": "model: 'gemini-2.0-flash-exp', // \"exp\" = experimental, not production-ready\nresponse_format: { /* complex schema */ } // May not be supported",
+        "lineStart": 204,
+        "lineEnd": 206
+      },
+      {
+        "language": "javascript",
+        "content": "// PRIMARY: Clipboard (unreliable)\nconst clipboardContent = await page.evaluate(async () => {\n  return await navigator.clipboard.readText(); // Fails in headless\n});\n\n// FALLBACK: DOM scraping (should be primary)",
+        "lineStart": 220,
+        "lineEnd": 226
+      },
+      {
+        "language": "javascript",
+        "content": "await page.waitForTimeout(2000); // Arbitrary delay, not synchronization\nawait browser.close(); // May still race with clipboard access",
+        "lineStart": 240,
+        "lineEnd": 242
+      },
+      {
+        "language": "javascript",
+        "content": "model: 'openai/gpt-5', // May not exist or require special access",
+        "lineStart": 267,
+        "lineEnd": 268
+      },
+      {
+        "language": "javascript",
+        "content": "await fs.writeFile('/Users/macuser/Documents/ChetasVault/...', content);\n// No try/catch for ENOENT or EACCES",
+        "lineStart": 292,
+        "lineEnd": 294
+      },
+      {
+        "language": "markdown",
+        "content": "# ADR-001: [Decision Title]\n\n## Status\n[Proposed | Accepted | Deprecated | Superseded]\n\n## Context\nWhat is the issue we're trying to solve?\n\n## Decision\nWhat are we deciding to do?\n\n## Alternatives Considered\n- Option 1: Pros/cons\n- Option 2: Pros/cons\n\n## Consequences\n- Positive impacts\n- Negative impacts\n- Technical debt introduced\n\n## Validation Criteria\nHow will we verify this decision was correct?",
+        "lineStart": 329,
+        "lineEnd": 351
+      },
+      {
+        "language": "markdown",
+        "content": "| Dependency | Version | Verified? | Fallback | Notes |\n|------------|---------|-----------|----------|-------|\n| Node.js | 20.x | ✅ | N/A | ES2022 support |\n| Chromium | 120+ | ✅ | Firefox | Via Playwright |\n| Gemini API | 2.0 | ❌ | OpenRouter | json_schema support TBD |\n| OpenRouter | 1.0 | ✅ | N/A | GPT-5 confirmed available |",
+        "lineStart": 365,
+        "lineEnd": 371
+      },
+      {
+        "language": "javascript",
+        "content": "// scripts/verify-dependencies.cjs\nconst dependencies = [\n  { name: 'Gemini API', test: async () => { /* API call */ } },\n  { name: 'OpenRouter', test: async () => { /* API call */ } },\n  { name: 'Clipboard API', test: async () => { /* Playwright test */ } }\n];\n\nfor (const dep of dependencies) {\n  try {\n    await dep.test();\n    console.log(`✅ ${dep.name}`);\n  } catch (error) {\n    console.error(`❌ ${dep.name}: ${error.message}`);\n    process.exit(1);\n  }\n}",
+        "lineStart": 375,
+        "lineEnd": 391
+      },
+      {
+        "language": "bash",
+        "content": "node scripts/verify-dependencies.cjs",
+        "lineStart": 395,
+        "lineEnd": 396
+      },
+      {
+        "language": "markdown",
+        "content": "| Failure Mode | Severity | Likelihood | Detection | Mitigation | Priority |\n|--------------|----------|------------|-----------|------------|----------|\n| Gemini API down | High | Medium | Health check | OpenRouter fallback | P0 |\n| Clipboard access denied | High | High | Try/catch | DOM scraping primary | P0 |\n| Browser OOM crash | Medium | Low | Memory monitor | Batch size limit | P1 |\n| Invalid JSON response | Medium | Medium | Schema validation | Retry with different prompt | P1 |",
+        "lineStart": 403,
+        "lineEnd": 409
+      },
+      {
+        "language": "markdown",
+        "content": "# Production Environment Requirements\n\n## Operating System\n- **Primary:** macOS 13+ (Ventura)\n- **Tested:** Ubuntu 22.04 LTS\n- **Not Supported:** Windows (hardcoded paths)\n\n## Runtime\n- **Node.js:** 20.x LTS (exact: 20.11.0)\n- **pnpm:** 8.x (exact: 8.14.0)\n\n## Browser\n- **Chromium:** 120.0.6099.71 (via Playwright)\n- **Memory:** 2GB per browser instance\n- **Disk:** 500MB for browser contexts\n\n## System Resources\n- **CPU:** 4 cores minimum (3 concurrent browsers)\n- **RAM:** 8GB minimum (12GB recommended)\n- **Disk:** 10GB free space (logs + contexts + reports)\n\n## Network\n- **Bandwidth:** 10 Mbps upload/download\n- **Latency:** < 100ms to AI APIs\n- **Firewall:** Outbound HTTPS (443) allowed\n\n## File System\n- **Paths:** Configurable via environment variable\n- **Permissions:** Read/write to output directories\n- **Format:** Case-sensitive filesystem required",
+        "lineStart": 418,
+        "lineEnd": 448
+      },
+      {
+        "language": "json",
+        "content": "{\n  \"engines\": {\n    \"node\": \">=20.11.0 <21.0.0\",\n    \"pnpm\": \">=8.14.0\"\n  }\n}",
+        "lineStart": 452,
+        "lineEnd": 458
+      },
+      {
+        "language": "markdown",
+        "content": "## Description\n<!-- What does this PR do? -->\n\n## Type of Change\n- [ ] Bug fix\n- [ ] New feature\n- [ ] Breaking change\n- [ ] Documentation update\n\n## Checklist\n- [ ] Code follows project style guide\n- [ ] Self-review completed\n- [ ] Comments added for complex logic\n- [ ] Tests added/updated\n- [ ] Documentation updated\n- [ ] No hardcoded values (use config/env)\n- [ ] Error handling added\n- [ ] Logging added for debugging\n\n## Testing\n- [ ] Tested locally in development mode\n- [ ] Tested production build\n- [ ] Tested error scenarios\n- [ ] Memory profiling completed (if applicable)\n\n## Related Issues\nCloses #[issue number]",
+        "lineStart": 467,
+        "lineEnd": 494
+      },
+      {
+        "language": "yaml",
+        "content": "# .github/workflows/pr-checks.yml\nname: PR Checks\non: [pull_request]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: pnpm install\n      - run: pnpm lint\n      - run: pnpm type-check\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: pnpm install\n      - run: pnpm test",
+        "lineStart": 498,
+        "lineEnd": 515
+      },
+      {
+        "language": "bash",
+        "content": "pnpm add -D husky lint-staged\npnpm exec husky install\npnpm exec husky add .husky/pre-commit \"pnpm lint-staged\"",
+        "lineStart": 522,
+        "lineEnd": 525
+      },
+      {
+        "language": "json",
+        "content": "{\n  \"lint-staged\": {\n    \"*.{js,ts,cjs}\": [\n      \"eslint --fix\",\n      \"prettier --write\"\n    ],\n    \"*.md\": [\n      \"prettier --write\"\n    ]\n  },\n  \"scripts\": {\n    \"prepare\": \"husky install\"\n  }\n}",
+        "lineStart": 529,
+        "lineEnd": 543
+      },
+      {
+        "language": "javascript",
+        "content": "// .eslintrc.cjs\nmodule.exports = {\n  rules: {\n    'no-undef': 'error', // Would have caught timestamp bug\n    'no-unused-vars': 'warn',\n    '@typescript-strict/no-any': 'error'\n  }\n};",
+        "lineStart": 547,
+        "lineEnd": 555
+      },
+      {
+        "language": "javascript",
+        "content": "// tests/integration/query-splitting.test.js\nimport { test, expect } from 'vitest';\nimport { splitQuery } from '../scripts/deep-research-orchestrator.cjs';\n\ntest('splitQuery returns correct structure', async () => {\n  const result = await splitQuery('test query', 3);\n  \n  expect(result).toHaveProperty('report_title');\n  expect(result.question_sets).toHaveLength(3);\n  \n  for (const qs of result.question_sets) {\n    expect(qs).toHaveProperty('main_question');\n    expect(qs.sub_questions).toHaveLength(6);\n  }\n});\n\ntest('splitQuery handles API failure', async () => {\n  // Mock API to fail\n  process.env.GEMINI_API_KEY = 'invalid';\n  \n  await expect(splitQuery('test', 3)).rejects.toThrow();\n});",
+        "lineStart": 564,
+        "lineEnd": 586
+      },
+      {
+        "language": "javascript",
+        "content": "// tests/integration/browser-automation.test.js\nimport { test, expect } from 'vitest';\nimport { chromium } from 'playwright';\n\ntest('clipboard extraction works in headed mode', async () => {\n  const browser = await chromium.launch({ headless: false });\n  const page = await browser.newPage();\n  \n  await page.goto('https://example.com');\n  await page.evaluate(() => {\n    navigator.clipboard.writeText('test content');\n  });\n  \n  const content = await page.evaluate(() => {\n    return navigator.clipboard.readText();\n  });\n  \n  expect(content).toBe('test content');\n  await browser.close();\n});\n\ntest('clipboard extraction fails in headless mode', async () => {\n  const browser = await chromium.launch({ headless: true });\n  const page = await browser.newPage();\n  \n  await page.goto('https://example.com');\n  \n  const result = await page.evaluate(async () => {\n    try {\n      return await navigator.clipboard.readText();\n    } catch (error) {\n      return { error: error.message };\n    }\n  });\n  \n  expect(result).toHaveProperty('error');\n  await browser.close();\n});",
+        "lineStart": 590,
+        "lineEnd": 628
+      },
+      {
+        "language": "bash",
+        "content": "pnpm test:integration",
+        "lineStart": 632,
+        "lineEnd": 633
+      },
+      {
+        "language": "typescript",
+        "content": "// src/types/logger.ts\ninterface LogEvent {\n  timestamp: string; // ISO 8601\n  level: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';\n  phase: string; // query_splitting | research_processing | consolidation\n  component: string; // orchestrator | browser | extractor\n  event: string; // phase_start | milestone | error | metric\n  message: string;\n  data?: Record<string, unknown>;\n  context: {\n    sessionId: string;\n    userId: string;\n    requestId: string;\n  };\n  error?: {\n    code: string; // ENUM: PARSE_ERROR | BROWSER_ERROR | API_ERROR\n    message: string;\n    stack?: string;\n    recoveryAction?: string;\n  };\n}",
+        "lineStart": 642,
+        "lineEnd": 663
+      },
+      {
+        "language": "typescript",
+        "content": "// src/types/errors.ts\nenum ErrorCode {\n  // AI API Errors\n  API_RATE_LIMIT = 'API_RATE_LIMIT',\n  API_TIMEOUT = 'API_TIMEOUT',\n  API_INVALID_RESPONSE = 'API_INVALID_RESPONSE',\n  API_AUTH_FAILED = 'API_AUTH_FAILED',\n  \n  // Browser Errors\n  BROWSER_LAUNCH_FAILED = 'BROWSER_LAUNCH_FAILED',\n  BROWSER_TIMEOUT = 'BROWSER_TIMEOUT',\n  BROWSER_CLOSED = 'BROWSER_CLOSED',\n  \n  // Extraction Errors\n  EXTRACTION_CLIPBOARD_FAILED = 'EXTRACTION_CLIPBOARD_FAILED',\n  EXTRACTION_DOM_FAILED = 'EXTRACTION_DOM_FAILED',\n  EXTRACTION_INSUFFICIENT_CONTENT = 'EXTRACTION_INSUFFICIENT_CONTENT',\n  \n  // File System Errors\n  FS_WRITE_FAILED = 'FS_WRITE_FAILED',\n  FS_READ_FAILED = 'FS_READ_FAILED',\n  FS_DIR_NOT_FOUND = 'FS_DIR_NOT_FOUND',\n  \n  // Parse Errors\n  PARSE_JSON_FAILED = 'PARSE_JSON_FAILED',\n  PARSE_INVALID_STRUCTURE = 'PARSE_INVALID_STRUCTURE'\n}",
+        "lineStart": 667,
+        "lineEnd": 694
+      },
+      {
+        "language": "javascript",
+        "content": "// src/utils/metrics.js\nclass MetricsCollector {\n  constructor() {\n    this.metrics = {\n      query_splitting: { success: 0, failure: 0, avg_duration: 0 },\n      research_processing: { success: 0, failure: 0, avg_duration: 0 },\n      extraction: { clipboard_success: 0, dom_fallback: 0, failure: 0 },\n      consolidation: { success: 0, failure: 0, avg_duration: 0 }\n    };\n  }\n  \n  record(phase, success, duration) {\n    const metric = this.metrics[phase];\n    if (success) {\n      metric.success++;\n    } else {\n      metric.failure++;\n    }\n    metric.avg_duration = (metric.avg_duration + duration) / 2;\n  }\n  \n  getSuccessRate(phase) {\n    const metric = this.metrics[phase];\n    return metric.success / (metric.success + metric.failure);\n  }\n  \n  export() {\n    return {\n      timestamp: new Date().toISOString(),\n      overall_success_rate: this.getSuccessRate('research_processing'),\n      ...this.metrics\n    };\n  }\n}\n\n// Export metrics on server shutdown\nprocess.on('SIGTERM', () => {\n  const metrics = metricsCollector.export();\n  fs.writeFileSync('metrics.json', JSON.stringify(metrics, null, 2));\n  process.exit(0);\n});",
+        "lineStart": 698,
+        "lineEnd": 739
+      },
+      {
+        "language": "javascript",
+        "content": "const fs = require('fs').promises;\nconst path = require('path');\n\nconst BASE_PATH = process.env.OUTPUT_PATH || '/Users/macuser/Documents/ChetasVault/Agent output';\n\nconst REQUIRED_DIRS = [\n  'YT-transcription-summaries/final-reports',\n  'Deeper Research/queries',\n  'Deeper Research/intermediate',\n  'Deeper Research/consolidated',\n  'Deeper Research/errors'\n];\n\nasync function initDirectories() {\n  console.log(`Initializing directories under: ${BASE_PATH}`);\n  \n  for (const dir of REQUIRED_DIRS) {\n    const fullPath = path.join(BASE_PATH, dir);\n    try {\n      await fs.mkdir(fullPath, { recursive: true });\n      // Test write permissions\n      const testFile = path.join(fullPath, '.write-test');\n      await fs.writeFile(testFile, 'test');\n      await fs.unlink(testFile);\n      console.log(`✅ ${dir}`);\n    } catch (error) {\n      console.error(`❌ ${dir}: ${error.message}`);\n      process.exit(1);\n    }\n  }\n  \n  console.log('All directories initialized successfully');\n}\n\ninitDirectories();",
+        "lineStart": 748,
+        "lineEnd": 783
+      },
+      {
+        "language": "json",
+        "content": "{\n  \"scripts\": {\n    \"postinstall\": \"node scripts/init-directories.cjs\"\n  }\n}",
+        "lineStart": 787,
+        "lineEnd": 792
+      },
+      {
+        "language": "javascript",
+        "content": "app.get('/api/health', async (req, res) => {\n  const health = {\n    status: 'ok',\n    timestamp: new Date().toISOString(),\n    checks: {\n      filesystem: 'unknown',\n      gemini_api: 'unknown',\n      openrouter_api: 'unknown',\n      browser: 'unknown'\n    }\n  };\n  \n  // Check filesystem\n  try {\n    const testPath = '/Users/macuser/Documents/ChetasVault/Agent output/Deeper Research/';\n    await fs.access(testPath, fs.constants.W_OK);\n    health.checks.filesystem = 'ok';\n  } catch (error) {\n    health.checks.filesystem = 'error';\n    health.status = 'degraded';\n  }\n  \n  // Check Gemini API\n  try {\n    const response = await gemini.chat.completions.create({\n      model: 'gemini-2.0-flash-exp',\n      messages: [{ role: 'user', content: 'test' }],\n      max_tokens: 10\n    });\n    health.checks.gemini_api = 'ok';\n  } catch (error) {\n    health.checks.gemini_api = 'error';\n    health.status = 'degraded';\n  }\n  \n  // Check OpenRouter\n  try {\n    const response = await openrouter.chat.completions.create({\n      model: 'openai/gpt-4o-mini',\n      messages: [{ role: 'user', content: 'test' }],\n      max_tokens: 10\n    });\n    health.checks.openrouter_api = 'ok';\n  } catch (error) {\n    health.checks.openrouter_api = 'error';\n    health.status = 'degraded';\n  }\n  \n  // Check browser launch\n  try {\n    const browser = await chromium.launch({ headless: true });\n    await browser.close();\n    health.checks.browser = 'ok';\n  } catch (error) {\n    health.checks.browser = 'error';\n    health.status = 'degraded';\n  }\n  \n  const statusCode = health.status === 'ok' ? 200 : 503;\n  res.status(statusCode).json(health);\n});",
+        "lineStart": 799,
+        "lineEnd": 860
+      },
+      {
+        "language": "bash",
+        "content": "# scripts/monitor-health.sh\nwhile true; do\n  response=$(curl -s http://localhost:3000/api/health)\n  status=$(echo $response | jq -r '.status')\n  \n  if [ \"$status\" != \"ok\" ]; then\n    echo \"❌ Health check failed: $response\"\n    # Send alert (email, Slack, PagerDuty, etc.)\n  else\n    echo \"✅ System healthy\"\n  fi\n  \n  sleep 60\ndone",
+        "lineStart": 864,
+        "lineEnd": 878
+      },
+      {
+        "language": "javascript",
+        "content": "const activeProcesses = new Map();\n\napp.post('/api/research', (req, res) => {\n  const proc = spawn(/* ... */);\n  const processId = `research_${Date.now()}`;\n  activeProcesses.set(processId, proc);\n  \n  proc.on('close', () => {\n    activeProcesses.delete(processId);\n  });\n  \n  // ... rest of handler\n});\n\n// Graceful shutdown\nprocess.on('SIGTERM', async () => {\n  console.log('SIGTERM received, starting graceful shutdown...');\n  \n  // Stop accepting new requests\n  server.close(() => {\n    console.log('HTTP server closed');\n  });\n  \n  // Wait for active research to complete (max 5 minutes)\n  const shutdownTimeout = setTimeout(() => {\n    console.log('Shutdown timeout, force killing processes');\n    for (const proc of activeProcesses.values()) {\n      proc.kill('SIGKILL');\n    }\n    process.exit(1);\n  }, 300000);\n  \n  // Check every second\n  const checkInterval = setInterval(() => {\n    if (activeProcesses.size === 0) {\n      clearTimeout(shutdownTimeout);\n      clearInterval(checkInterval);\n      console.log('All processes completed, exiting');\n      process.exit(0);\n    } else {\n      console.log(`Waiting for ${activeProcesses.size} processes to complete...`);\n    }\n  }, 1000);\n});",
+        "lineStart": 885,
+        "lineEnd": 929
+      },
+      {
+        "language": "javascript",
+        "content": "// WRONG: Assume Gemini API supports json_schema\nconst response = await gemini.chat.completions.create({\n  response_format: { type: 'json_schema', /* ... */ }\n});\n\n// RIGHT: Test first, then implement\nasync function testGeminiJsonSchema() {\n  try {\n    const response = await gemini.chat.completions.create({\n      model: 'gemini-2.0-flash-exp',\n      messages: [{ role: 'user', content: 'Return JSON: {\"test\": true}' }],\n      response_format: { type: 'json_schema', /* minimal schema */ }\n    });\n    console.log('✅ Gemini supports json_schema');\n    return true;\n  } catch (error) {\n    console.error('❌ Gemini does not support json_schema:', error.message);\n    return false;\n  }\n}",
+        "lineStart": 968,
+        "lineEnd": 988
+      }
+    ],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 5,
+      "endLine": 993
+    },
+    "tags": [],
+    "severity": "low",
+    "category": "general"
+  },
+  {
+    "id": "artifact-3",
+    "title": "t",
+    "description": "*The honest Sliither* admits: Ice-ninja was 100% correct to question the discrepancy. The resolution made claims that were either incorrect or misleading. 🐍 <end artifact>",
+    "codeBlocks": [
+      {
+        "language": "javascript",
+        "content": "async function processInBatches(questionSets, maxConcurrent = 3) {\n  const results = [];\n  const timestamp = Date.now(); // CRITICAL FIX: Define timestamp here\n  const batchStartTime = Date.now();",
+        "filename": "processInBatches",
+        "lineStart": 1027,
+        "lineEnd": 1031
+      },
+      {
+        "language": "javascript",
+        "content": "response = await gemini.chat.completions.create({\n  model: 'gemini-2.0-flash-exp',",
+        "lineStart": 1043,
+        "lineEnd": 1045
+      },
+      {
+        "language": "bash",
+        "content": "curl https://generativelanguage.googleapis.com/v1beta/models \\\n  -H \"Authorization: Bearer $GEMINI_API_KEY\"",
+        "lineStart": 1057,
+        "lineEnd": 1059
+      },
+      {
+        "language": "javascript",
+        "content": "response_format: {\n  type: \"json_schema\",\n  json_schema: {\n    name: \"research_query_split\",\n    strict: true,\n    schema: {\n      type: \"object\",\n      properties: {\n        report_title: { type: \"string\" },\n        question_sets: {\n          type: \"array\",\n          items: {\n            type: \"object\",\n            properties: {\n              main_question: { type: \"string\" },\n              sub_questions: {\n                type: \"array\",\n                items: { type: \"string\" },\n                minItems: 6,\n                maxItems: 6\n              }\n            },\n            required: [\"main_question\", \"sub_questions\"],\n            additionalProperties: false\n          },\n          minItems: numQueriesInt,\n          maxItems: numQueriesInt\n        }\n      },\n      required: [\"report_title\", \"question_sets\"],\n      additionalProperties: false\n    }\n  }\n}",
+        "lineStart": 1069,
+        "lineEnd": 1103
+      },
+      {
+        "language": "text",
+        "content": "Gemini API uses \"generationConfig\" not \"response_format\"\nCorrect format:\n{\n  generationConfig: {\n    responseMimeType: \"application/json\",\n    responseSchema: { /* schema */ }\n  }\n}",
+        "lineStart": 1113,
+        "lineEnd": 1121
+      },
+      {
+        "language": "javascript",
+        "content": "const response = await openrouter.chat.completions.create({\n  model: 'openai/gpt-5', // FIXED: Use correct model",
+        "lineStart": 1133,
+        "lineEnd": 1135
+      },
+      {
+        "language": "javascript",
+        "content": "// Wait for textarea\nconst textareaSelector = 'textarea, [contenteditable=\"true\"]';\nawait page.waitForSelector(textareaSelector, { timeout: 15000 });",
+        "lineStart": 1170,
+        "lineEnd": 1173
+      },
+      {
+        "language": "javascript",
+        "content": "let stdoutBuffer = '';\n\nproc.stdout.on('data', (data) => {\n  stdoutBuffer += data.toString();\n  const lines = stdoutBuffer.split('\\n');\n  stdoutBuffer = lines.pop() || ''; // Keep incomplete line in buffer\n\n  for (const line of lines) {\n    if (!line.trim()) continue;\n    // Process complete lines...\n  }\n});",
+        "lineStart": 1190,
+        "lineEnd": 1202
+      },
+      {
+        "language": "javascript",
+        "content": "app.get('/api/reports/:filename', async (req, res) => {\n  // Try YouTube first, then research\n});\n\napp.get('/api/reports', async (req, res) => {\n  // List all reports\n});",
+        "lineStart": 1220,
+        "lineEnd": 1227
+      },
+      {
+        "language": "javascript",
+        "content": "try {\n  // PRIMARY: Clipboard extraction\n  const copyButton = page.locator('button[aria-label*=\"Copy\"]').first();\n  await copyButton.click();\n  await page.waitForTimeout(1000);\n\n  const clipboardContent = await page.evaluate(async () => {\n    try {\n      return await navigator.clipboard.readText();\n    } catch {\n      return null;\n    }\n  });",
+        "lineStart": 1244,
+        "lineEnd": 1257
+      },
+      {
+        "language": "javascript",
+        "content": "} finally {\n  await page.waitForTimeout(2000); // Prevent race condition\n  await browser.close();",
+        "lineStart": 1275,
+        "lineEnd": 1278
+      },
+      {
+        "language": "text",
+        "content": "Error: Unknown parameter 'response_format'",
+        "lineStart": 1322,
+        "lineEnd": 1323
+      },
+      {
+        "language": "javascript",
+        "content": "// WRONG (current code):\nresponse = await gemini.chat.completions.create({\n  model: 'gemini-2.0-flash-exp',\n  response_format: { type: \"json_schema\", /* ... */ }\n});\n\n// CORRECT (what it should be):\nresponse = await gemini.chat.completions.create({\n  model: 'gemini-2.0-flash-exp',\n  generationConfig: {\n    responseMimeType: \"application/json\",\n    responseSchema: { /* JSON Schema */ }\n  }\n});",
+        "lineStart": 1327,
+        "lineEnd": 1341
+      },
+      {
+        "language": "text",
+        "content": "Error: Model 'openai/gpt-5' not found",
+        "lineStart": 1350,
+        "lineEnd": 1351
+      },
+      {
+        "language": "javascript",
+        "content": "// WRONG (current code):\nmodel: 'openai/gpt-5',\n\n// CORRECT (actual available models):\nmodel: 'openai/gpt-4o', // or 'anthropic/claude-3.5-sonnet'",
+        "lineStart": 1355,
+        "lineEnd": 1360
+      },
+      {
+        "language": "javascript",
+        "content": "// WRONG (current code):\n// PRIMARY: Clipboard (fails in headless)\n// FALLBACK: DOM scraping\n\n// CORRECT (what it should be):\n// PRIMARY: DOM scraping (reliable)\n// FALLBACK: Clipboard (for headed mode only)",
+        "lineStart": 1375,
+        "lineEnd": 1382
+      }
+    ],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 995,
+      "endLine": 1475
+    },
+    "tags": [],
+    "severity": "critical",
+    "category": "problem"
+  },
+  {
+    "id": "artifact-4",
+    "title": "t",
+    "description": "",
+    "codeBlocks": [],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 1477,
+      "endLine": 2096
+    },
+    "tags": [],
+    "severity": "medium",
+    "category": "general"
+  },
+  {
+    "id": "artifact-5",
+    "title": "s",
+    "description": "",
+    "codeBlocks": [],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 2098,
+      "endLine": 2379
+    },
+    "tags": [],
+    "severity": "medium",
+    "category": "general"
+  },
+  {
+    "id": "artifact-6",
+    "title": "y",
+    "description": "- of project from brief.md - Awareness of working/broken components",
+    "codeBlocks": [
+      {
+        "language": "bash",
+        "content": "# Create timestamped backup\ncp -r . ../youtube-research-backup-$(date +%Y%m%d-%H%M%S)",
+        "lineStart": 2404,
+        "lineEnd": 2406
+      },
+      {
+        "language": "bash",
+        "content": "# Check Node.js\nnode --version  # Should be 20.x\n\n# Check pnpm\npnpm --version  # Should be 8.x\n\n# Verify project dependencies installed\npnpm install\n\n# Verify Kilo Code extension is active in VSCode\n# Look for Kilo icon in sidebar",
+        "lineStart": 2413,
+        "lineEnd": 2424
+      },
+      {
+        "language": "bash",
+        "content": "# Create audit directories\nmkdir -p audit-reports\nmkdir -p scripts\nmkdir -p docs\nmkdir -p .kilocode/rules/memory-bank\n\n# Verify creation\nls -la audit-reports scripts docs .kilocode/rules/memory-bank",
+        "lineStart": 2430,
+        "lineEnd": 2438
+      },
+      {
+        "language": "bash",
+        "content": "ls -lh scripts/codebase-mapper.cjs\n# Should show file exists with ~20KB size",
+        "lineStart": 2455,
+        "lineEnd": 2457
+      },
+      {
+        "language": "javascript",
+        "content": "projectGoals: [\n  'YouTube video transcript extraction and analysis',\n  'Deep research orchestration with Gemini AI',\n  'Browser automation via Playwright',\n  'Express API server with SSE progress tracking',\n  'Frontend UI with Vite/React/Tailwind'\n]",
+        "lineStart": 2467,
+        "lineEnd": 2474
+      },
+      {
+        "language": "bash",
+        "content": "# Execute mapper\nnode scripts/codebase-mapper.cjs\n\n# Expected output:\n# 🔍 Starting codebase analysis...\n# 📊 Analyzing import relationships...\n# 🏷️  Classifying files...\n# ✅ Generated: summary.md\n# ✅ Generated: detailed-analysis.md\n# ✅ Generated: archival-plan.md\n# ✅ Generated: archive-files.sh\n# ✅ Generated: dependency-graph.md\n# ✅ Analysis complete! Reports saved to: ./audit-reports",
+        "lineStart": 2483,
+        "lineEnd": 2496
+      },
+      {
+        "language": "bash",
+        "content": "ls audit-reports/\n# Should contain:\n# - summary.md\n# - detailed-analysis.md\n# - archival-plan.md\n# - archive-files.sh\n# - dependency-graph.md",
+        "lineStart": 2500,
+        "lineEnd": 2507
+      },
+      {
+        "language": "text",
+        "content": "@audit-reports/archival-plan.md\n\nReview the archival plan. For each file listed:\n1. Does it match project goals?\n2. Is anything importing it? (check dependency-graph.md)\n3. Will removing it break the system?\n\nList any files that should NOT be archived.",
+        "lineStart": 2542,
+        "lineEnd": 2550
+      },
+      {
+        "language": "bash",
+        "content": "# Make script executable\nchmod +x audit-reports/archive-files.sh\n\n# Run archive script\ncd audit-reports\n./archive-files.sh\n\n# Output should show:\n# Creating archive directory: archive/[timestamp]\n# Creating archive manifest...\n# Archiving: [file1]\n# Archiving: [file2]\n# ...\n# ✅ Archive complete!",
+        "lineStart": 2559,
+        "lineEnd": 2573
+      },
+      {
+        "language": "bash",
+        "content": "# Check archive created\nls archive/\n\n# Should show timestamped directory like: 20251015-203045\n\n# Check manifest\ncat archive/*/MANIFEST.md",
+        "lineStart": 2577,
+        "lineEnd": 2584
+      },
+      {
+        "language": "bash",
+        "content": "node scripts/validate-post-archive.cjs\n\n# Expected output:\n# 🔍 Starting post-archive validation...\n# 📁 Testing file structure...\n#    ✅ File exists: package.json\n#    ✅ File exists: server.cjs\n# ...\n# 📦 Testing import resolution...\n# 🔨 Testing build process...\n# 🚀 Testing server startup...\n# ============================================================\n# ✅ Passed: [N]\n# ❌ Failed: [M]\n# ⚠️  Warnings: [K]\n# ============================================================",
+        "lineStart": 2599,
+        "lineEnd": 2615
+      },
+      {
+        "language": "bash",
+        "content": "# Find which archive has the file\nls archive/*/path/to/file\n\n# Restore specific file\ncp archive/[timestamp]/path/to/file ./path/to/file",
+        "lineStart": 2623,
+        "lineEnd": 2628
+      },
+      {
+        "language": "text",
+        "content": "initialize memory bank for this project",
+        "lineStart": 2638,
+        "lineEnd": 2639
+      },
+      {
+        "language": "text",
+        "content": ".kilocode/\n  rules/\n    memory-bank/\n      brief.md\n      projectRoadmap.md\n      activeContext.md",
+        "lineStart": 2643,
+        "lineEnd": 2649
+      },
+      {
+        "language": "bash",
+        "content": "ls -la .kilocode/rules/memory-bank/",
+        "lineStart": 2653,
+        "lineEnd": 2654
+      },
+      {
+        "language": "markdown",
+        "content": "# System Patterns & Component Registry\n*Last Updated: [TODAY'S DATE]*\n\n## ⚠️ WORKING COMPONENTS - DO NOT MODIFY\n\n### server.cjs::Backend Line Buffering (Lines 71-82)\n- **Status:** ✅ VERIFIED WORKING\n- **Function:** Prevents partial JSON parse errors in SSE streaming\n- **Why It Works:** Proper stdoutBuffer with lines.pop() pattern\n- **Last Verified:** [TODAY'S DATE]\n- **Protection Level:** CRITICAL - Any modification will break SSE progress tracking\n- **Dependencies:** Express server, child process stdout parsing\n\n### [Add more working components from audit-reports/detailed-analysis.md marked as \"core\" or \"active\"]\n\n---\n\n## 🔍 BROKEN COMPONENTS - NEEDS FIXING\n\n### deep-research-orchestrator.cjs::splitQuery()\n- **Problem:** Uses wrong API format for Gemini\n- **Specific Issue:** Uses OpenAI-style `response_format` parameter with Gemini endpoint\n- **Impact:** Query splitting phase fails immediately\n- **Current Code (Line ~72):**\n  ```javascript\n  response_format: {\n    type: \"json_schema\",\n    json_schema: { /* ... */ }\n  }\n  ```\n- **Correct Approach:** Use Gemini's `generationConfig` format:\n  ```javascript\n  generationConfig: {\n    responseMimeType: \"application/json\",\n    responseSchema: { /* ... */ }\n  }\n  ```\n- **Priority:** P0 - Blocks entire research workflow\n- **Verification Needed:** Test Gemini API endpoint with correct format\n- **Fallback:** OpenRouter with gpt-4o-mini (already implemented)\n\n### deep-research-orchestrator.cjs::consolidateResults()\n- **Problem:** Uses non-existent model 'openai/gpt-5'\n- **Current Code (Line ~279):**\n  ```javascript\n  model: 'openai/gpt-5'\n  ```\n- **Reality:** This model doesn't exist on OpenRouter\n- **Impact:** Consolidation phase fails after 30+ minutes of research\n- **Correct Models:** 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'\n- **Priority:** P0 - Blocks final report generation\n- **Verification Needed:** List available OpenRouter models\n\n### deep-research-orchestrator.cjs::extractResearchResult()\n- **Problem:** Clipboard extraction is primary method but fails in headless Chrome\n- **Current Flow:** Clipboard (unreliable) → DOM fallback\n- **Correct Flow:** DOM primary → Clipboard fallback\n- **Impact:** ~50% extraction failure rate in production\n- **Priority:** P1 - Reduces research success rate\n- **Implementation:** Invert try order in extraction function\n\n---\n\n## 🔌 API VERIFICATION STATUS\n\n### Gemini API\n- **Endpoint:** https://generativelanguage.googleapis.com/v1beta/openai/\n- **Model Used:** gemini-2.0-flash-exp\n- **Parameter Format:** ❌ UNVERIFIED - Using OpenAI format, may not be supported\n- **Status:** 🚨 NEEDS TESTING BEFORE PRODUCTION\n- **Test Command:**\n  ```bash\n  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp \\\n    -H \"Authorization: Bearer $GEMINI_API_KEY\"\n  ```\n- **Fallback:** OpenRouter with gpt-4o-mini ✅ CONFIGURED\n\n### OpenRouter API\n- **Endpoint:** https://openrouter.ai/api/v1\n- **Model Used:** openai/gpt-5\n- **Status:** ❌ MODEL DOES NOT EXIST\n- **Action Required:** Replace with valid model\n- **List Models Command:**\n  ```bash\n  curl https://openrouter.ai/api/v1/models \\\n    -H \"Authorization: Bearer $OPENROUTER_API_KEY\" | jq '.data[] | .id'\n  ```\n- **Recommended Models:** openai/gpt-4o, anthropic/claude-3.5-sonnet\n\n---\n\n## 🏗️ ARCHITECTURAL DECISIONS\n\n### Decision: Dual Frontend Architecture (Vite Dev + Express Prod)\n- **Rationale:** Fast HMR in dev, single-server simplicity in prod\n- **Trade-off:** Two different serving mechanisms to maintain\n- **Status:** ✅ WORKING but adds complexity\n- **Future Consideration:** Unify on single architecture\n\n### Decision: Browser Automation for AI Interaction\n- **Rationale:** No official Gemini Deep Research API\n- **Trade-off:** Brittle DOM selectors, manual auth required\n- **Status:** ⚠️ FRAGILE - UI changes break system\n- **Risk:** High maintenance overhead\n- **Future Consideration:** Monitor for official API release\n\n### Decision: Fresh Browser Contexts Per Session\n- **Rationale:** Prevents SingletonLock conflicts from persistent profiles\n- **Trade-off:** Requires manual Google login for each deployment\n- **Status:** ✅ WORKING but not ideal\n- **Current Code:** Uses temp profiles `/tmp/chrome-profile-{timestamp}-{random}`\n- **Future Consideration:** Implement programmatic OAuth\n\n---\n\n## 📁 FILE SYSTEM DEPENDENCIES\n\n### Base Output Path\n- **Path:** /Users/macuser/Documents/ChetasVault/Agent output/\n- **Status:** ❌ HARDCODED - Not cross-platform\n- **Issue:** No existence check before write operations\n- **Priority:** P2 - Will fail on different systems\n- **Solution Needed:** Environment variable + directory creation script\n\n### Required Subdirectories\n- YT-transcription-summaries/final-reports/\n- Deeper Research/queries/\n- Deeper Research/intermediate/\n- Deeper Research/consolidated/\n- Deeper Research/errors/\n\n**Status:** ❌ NOT AUTO-CREATED\n**Solution:** Run `node scripts/init-directories.cjs` (needs creation)\n\n---\n\n## 📝 RECENT CHANGES LOG\n\n### 2025-10-15: Fixed missing timestamp variable\n- **File:** scripts/deep-research-orchestrator.cjs\n- **Change:** Added `const timestamp = Date.now()` at line 119 in processInBatches()\n- **Reason:** Variable was referenced in file path construction but never defined\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** File saves now succeed without undefined in path\n- **Side Effects:** None - isolated variable declaration\n\n### 2025-10-15: Backend line buffering implementation\n- **File:** server.cjs\n- **Change:** Implemented proper stdoutBuffer pattern (lines 71-82)\n- **Reason:** Prevented partial JSON parse errors in SSE streaming\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** No more \"Unexpected token\" errors in console\n- **Side Effects:** None - improved stability\n\n### 2025-10-15: Removed duplicate code blocks\n- **File:** scripts/deep-research-orchestrator.cjs\n- **Change:** Removed ~400 lines of duplicate processInBatches() function\n- **Reason:** Code duplication caused confusion and potential version skew\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** File reduced from ~1200 to ~600 lines, single source of truth\n- **Side Effects:** None - elimination of redundancy\n\n---\n\n## 🔄 MAINTENANCE PROTOCOL\n\n### When to Update This Document\n- After fixing any component (move from BROKEN to WORKING)\n- After discovering new broken components\n- After verifying API endpoints\n- After making architectural decisions\n- After significant code changes\n\n### Update Checklist\n- [ ] Update RECENT CHANGES LOG with date, file, change, reason\n- [ ] Move fixed components from BROKEN to WORKING registry\n- [ ] Update API VERIFICATION STATUS if tested\n- [ ] Update Last Updated date at top\n- [ ] Commit changes (if using git)\n\n---\n\n## 🚨 CRITICAL REMINDERS FOR AI ASSISTANTS\n\nWhen asked to fix bugs or add features:\n\n1. **READ THIS ENTIRE FILE FIRST** - Do not skip sections\n2. **CHECK WORKING COMPONENTS** - Never modify components marked ⚠️\n3. **VERIFY API USAGE** - Check API VERIFICATION STATUS before assuming API behavior\n4. **MAKE SURGICAL CHANGES** - Modify only the specific broken component\n5. **UPDATE THIS FILE** - Add entry to RECENT CHANGES LOG after successful fix\n6. **TEST ASSUMPTIONS** - Don't assume external services work as expected\n\n### Example Good Fix Process:",
+        "lineStart": 2665,
+        "lineEnd": 2859
+      },
+      {
+        "language": "text",
+        "content": "\n### Example Bad Fix Process (DO NOT DO):",
+        "lineStart": 2868,
+        "lineEnd": 2870
+      },
+      {
+        "language": "text",
+        "content": "",
+        "lineStart": 2877,
+        "lineEnd": 2877
+      },
+      {
+        "language": "text",
+        "content": "@audit-reports/detailed-analysis.md\n@.kilocode/rules/memory-bank/systemPatterns.md\n\nUsing the detailed analysis report, help me populate systemPatterns.md:\n\n1. Add all files marked as \"core\" to the WORKING COMPONENTS section\n2. Add all files marked as \"suspicious\" or \"orphaned\" to explain why they were archived\n3. Update API VERIFICATION STATUS based on any external dependencies found\n4. Add any architectural patterns you notice\n\nFormat each entry following the template structure already in systemPatterns.md.",
+        "lineStart": 2891,
+        "lineEnd": 2902
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/brief.md\n\nUpdate this file to accurately reflect the current project state:\n- What is the project? (YouTube Research System)\n- What works? (List from systemPatterns.md WORKING components)\n- What's broken? (List from systemPatterns.md BROKEN components)\n- What was archived? (Reference audit-reports/archival-plan.md)",
+        "lineStart": 2910,
+        "lineEnd": 2917
+      },
+      {
+        "language": "text",
+        "content": "What is the current status of this project based on Memory Bank?",
+        "lineStart": 2925,
+        "lineEnd": 2926
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, the splitQuery() function uses wrong API format for Gemini.\n\nFix ONLY this function:\n1. Replace response_format with generationConfig\n2. Use responseMimeType: \"application/json\"\n3. Use responseSchema instead of json_schema\n4. Do NOT modify any other functions\n5. Provide before/after code comparison\n\nAfter providing the fix, explain what you changed and why.",
+        "lineStart": 2943,
+        "lineEnd": 2956
+      },
+      {
+        "language": "bash",
+        "content": "# Check the specific lines were changed\ngrep -n \"generationConfig\" scripts/deep-research-orchestrator.cjs\n# Should show the new format around line 72-107",
+        "lineStart": 2960,
+        "lineEnd": 2963
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, consolidateResults() uses non-existent model 'openai/gpt-5'.\n\nFix ONLY this line:\n1. Find line ~279 with model: 'openai/gpt-5'\n2. Replace with model: 'openai/gpt-4o'\n3. Do NOT modify any other code\n4. Provide before/after comparison",
+        "lineStart": 2971,
+        "lineEnd": 2981
+      },
+      {
+        "language": "bash",
+        "content": "grep \"openai/gpt-4o\" scripts/deep-research-orchestrator.cjs\n# Should show the corrected model name",
+        "lineStart": 2985,
+        "lineEnd": 2987
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, extractResearchResult() has clipboard as primary method but it fails in headless.\n\nFix the extraction order:\n1. Make DOM scraping the PRIMARY method\n2. Make clipboard the FALLBACK method\n3. Keep both methods but invert the try order\n4. Do NOT modify other parts of the function\n5. Provide before/after comparison",
+        "lineStart": 2995,
+        "lineEnd": 3006
+      },
+      {
+        "language": "text",
+        "content": "update memory bank\n\nThe following fixes have been applied and verified:\n1. splitQuery() - Gemini API format corrected\n2. consolidateResults() - Model name fixed to gpt-4o\n3. extractResearchResult() - DOM-primary extraction\n\nMove these components from BROKEN to WORKING in systemPatterns.md and add entries to RECENT CHANGES LOG.",
+        "lineStart": 3014,
+        "lineEnd": 3022
+      },
+      {
+        "language": "bash",
+        "content": "# Test query splitting (if you have API keys set)\nnode -e \"\nconst { splitQuery } = require('./scripts/deep-research-orchestrator.cjs');\nsplitQuery('test query', 3).then(console.log).catch(console.error);\n\"\n\n# Should output JSON with report_title and question_sets",
+        "lineStart": 3031,
+        "lineEnd": 3038
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@audit-reports/summary.md\n\nCreate a final summary document that includes:\n1. What was archived and why\n2. What was fixed\n3. Current system status (working/broken breakdown)\n4. Next recommended steps\n5. How to use Memory Bank going forward\n\nSave this as docs/context-recovery-summary.md",
+        "lineStart": 3046,
+        "lineEnd": 3057
+      },
+      {
+        "language": "markdown",
+        "content": "# Emergency Context Recovery\n\nIf model starts making blind changes again:\n\n1. Close current Kilo conversation\n2. Start NEW conversation\n3. Type: @.kilocode/rules/memory-bank/systemPatterns.md\n4. Confirm you see [Memory Bank: Active]\n5. State your bug clearly\n6. Ask: \"Before suggesting fixes, what components are marked DO NOT MODIFY?\"\n7. Verify AI reads systemPatterns.md before proposing changes\n\n## Circuit Breaker\n\nIf AI still goes blind after loading Memory Bank:\n\nRun full audit again:",
+        "lineStart": 3066,
+        "lineEnd": 3083
+      },
+      {
+        "language": "text",
+        "content": "\nThen reload Memory Bank and try again.",
+        "lineStart": 3088,
+        "lineEnd": 3090
+      },
+      {
+        "language": "markdown",
+        "content": "# Agentic Swarm Migration Plan\n\n## Tasks Suitable for Parallel Execution\n\nCurrent system runs sequentially. These tasks could run in parallel with agentic swarm:\n\n### Query Splitting → Research → Consolidation Pipeline\n\n**Current:** Sequential (45 min for 9 queries)\n**Agentic:** Parallel (15 min for 9 queries)\n\n**Architecture:**",
+        "lineStart": 3101,
+        "lineEnd": 3113
+      },
+      {
+        "language": "text",
+        "content": "\n**Required Framework:** Claude Code / Warp / CodeFlow / CodeBuff\n**Estimated Speedup:** 3-5x for research phase\n\n---\n\n### Codebase Audit → Classification → Archival\n\n**Current:** Sequential analysis (10 min)\n**Agentic:** Parallel analysis (2 min)\n\n**Architecture:**",
+        "lineStart": 3122,
+        "lineEnd": 3134
+      },
+      {
+        "language": "text",
+        "content": "\n**Estimated Speedup:** 5x for large codebases\n\n---\n\n## Stem Files for Migration\n\nCreate these files when ready to migrate:\n\n### `agentic/coordinator.yaml`\n- Define agent roles\n- Task assignment logic\n- Communication protocols\n\n### `agentic/agents/query-splitter.yaml`\n- Gemini API interface\n- JSON schema enforcement\n- Error handling\n\n### `agentic/agents/research-worker.yaml`\n- Playwright browser management\n- Extraction strategies\n- Result formatting\n\n### `agentic/agents/consolidator.yaml`\n- GPT-4o interface\n- Report synthesis\n- Markdown generation\n\n### Migration Trigger\nWhen codebase exceeds 1000 files OR research requires >20 parallel queries",
+        "lineStart": 3144,
+        "lineEnd": 3175
+      },
+      {
+        "language": "bash",
+        "content": "# Check all key files exist\nls -lh scripts/codebase-mapper.cjs\nls -lh scripts/validate-post-archive.cjs\nls -lh .kilocode/rules/memory-bank/systemPatterns.md\nls -lh audit-reports/summary.md\nls -lh docs/context-recovery-summary.md\nls -lh docs/EMERGENCY-RECOVERY.md\nls -lh docs/AGENTIC-MIGRATION-PLAN.md\n\n# All should show files with content",
+        "lineStart": 3194,
+        "lineEnd": 3204
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n\nPerform system health check:\n1. How many components are marked WORKING?\n2. How many are marked BROKEN?\n3. Are there any CRITICAL priority issues remaining?\n4. What is the recommended next step?",
+        "lineStart": 3210,
+        "lineEnd": 3217
+      }
+    ],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 2381,
+      "endLine": 3247
+    },
+    "tags": [],
+    "severity": "critical",
+    "category": "general"
+  },
+  {
+    "id": "artifact-7",
+    "title": "D",
+    "description": "",
+    "codeBlocks": [],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 3249,
+      "endLine": 3287
+    },
+    "tags": [],
+    "severity": "medium",
+    "category": "general"
+  },
+  {
+    "id": "artifact-8",
+    "title": "p",
+    "description": "- of project from brief.md - Awareness of working/broken components",
+    "codeBlocks": [
+      {
+        "language": "bash",
+        "content": "# Create timestamped backup\ncp -r . ../youtube-research-backup-$(date +%Y%m%d-%H%M%S)",
+        "lineStart": 3312,
+        "lineEnd": 3314
+      },
+      {
+        "language": "bash",
+        "content": "# Check Node.js\nnode --version  # Should be 20.x\n\n# Check pnpm\npnpm --version  # Should be 8.x\n\n# Verify project dependencies installed\npnpm install\n\n# Verify Kilo Code extension is active in VSCode\n# Look for Kilo icon in sidebar",
+        "lineStart": 3321,
+        "lineEnd": 3332
+      },
+      {
+        "language": "bash",
+        "content": "# Create audit directories\nmkdir -p audit-reports\nmkdir -p scripts\nmkdir -p docs\nmkdir -p .kilocode/rules/memory-bank\n\n# Verify creation\nls -la audit-reports scripts docs .kilocode/rules/memory-bank",
+        "lineStart": 3338,
+        "lineEnd": 3346
+      },
+      {
+        "language": "bash",
+        "content": "ls -lh scripts/codebase-mapper.cjs\n# Should show file exists with ~20KB size",
+        "lineStart": 3363,
+        "lineEnd": 3365
+      },
+      {
+        "language": "javascript",
+        "content": "projectGoals: [\n  'YouTube video transcript extraction and analysis',\n  'Deep research orchestration with Gemini AI',\n  'Browser automation via Playwright',\n  'Express API server with SSE progress tracking',\n  'Frontend UI with Vite/React/Tailwind'\n]",
+        "lineStart": 3375,
+        "lineEnd": 3382
+      },
+      {
+        "language": "bash",
+        "content": "# Execute mapper\nnode scripts/codebase-mapper.cjs\n\n# Expected output:\n# 🔍 Starting codebase analysis...\n# 📊 Analyzing import relationships...\n# 🏷️  Classifying files...\n# ✅ Generated: summary.md\n# ✅ Generated: detailed-analysis.md\n# ✅ Generated: archival-plan.md\n# ✅ Generated: archive-files.sh\n# ✅ Generated: dependency-graph.md\n# ✅ Analysis complete! Reports saved to: ./audit-reports",
+        "lineStart": 3391,
+        "lineEnd": 3404
+      },
+      {
+        "language": "bash",
+        "content": "ls audit-reports/\n# Should contain:\n# - summary.md\n# - detailed-analysis.md\n# - archival-plan.md\n# - archive-files.sh\n# - dependency-graph.md",
+        "lineStart": 3408,
+        "lineEnd": 3415
+      },
+      {
+        "language": "text",
+        "content": "@audit-reports/archival-plan.md\n\nReview the archival plan. For each file listed:\n1. Does it match project goals?\n2. Is anything importing it? (check dependency-graph.md)\n3. Will removing it break the system?\n\nList any files that should NOT be archived.",
+        "lineStart": 3450,
+        "lineEnd": 3458
+      },
+      {
+        "language": "bash",
+        "content": "# Make script executable\nchmod +x audit-reports/archive-files.sh\n\n# Run archive script\ncd audit-reports\n./archive-files.sh\n\n# Output should show:\n# Creating archive directory: archive/[timestamp]\n# Creating archive manifest...\n# Archiving: [file1]\n# Archiving: [file2]\n# ...\n# ✅ Archive complete!",
+        "lineStart": 3467,
+        "lineEnd": 3481
+      },
+      {
+        "language": "bash",
+        "content": "# Check archive created\nls archive/\n\n# Should show timestamped directory like: 20251015-203045\n\n# Check manifest\ncat archive/*/MANIFEST.md",
+        "lineStart": 3485,
+        "lineEnd": 3492
+      },
+      {
+        "language": "bash",
+        "content": "node scripts/validate-post-archive.cjs\n\n# Expected output:\n# 🔍 Starting post-archive validation...\n# 📁 Testing file structure...\n#    ✅ File exists: package.json\n#    ✅ File exists: server.cjs\n# ...\n# 📦 Testing import resolution...\n# 🔨 Testing build process...\n# 🚀 Testing server startup...\n# ============================================================\n# ✅ Passed: [N]\n# ❌ Failed: [M]\n# ⚠️  Warnings: [K]\n# ============================================================",
+        "lineStart": 3507,
+        "lineEnd": 3523
+      },
+      {
+        "language": "bash",
+        "content": "# Find which archive has the file\nls archive/*/path/to/file\n\n# Restore specific file\ncp archive/[timestamp]/path/to/file ./path/to/file",
+        "lineStart": 3531,
+        "lineEnd": 3536
+      },
+      {
+        "language": "text",
+        "content": "initialize memory bank for this project",
+        "lineStart": 3546,
+        "lineEnd": 3547
+      },
+      {
+        "language": "text",
+        "content": ".kilocode/\n  rules/\n    memory-bank/\n      brief.md\n      projectRoadmap.md\n      activeContext.md",
+        "lineStart": 3551,
+        "lineEnd": 3557
+      },
+      {
+        "language": "bash",
+        "content": "ls -la .kilocode/rules/memory-bank/",
+        "lineStart": 3561,
+        "lineEnd": 3562
+      },
+      {
+        "language": "markdown",
+        "content": "# System Patterns & Component Registry\n*Last Updated: [TODAY'S DATE]*\n\n## ⚠️ WORKING COMPONENTS - DO NOT MODIFY\n\n### server.cjs::Backend Line Buffering (Lines 71-82)\n- **Status:** ✅ VERIFIED WORKING\n- **Function:** Prevents partial JSON parse errors in SSE streaming\n- **Why It Works:** Proper stdoutBuffer with lines.pop() pattern\n- **Last Verified:** [TODAY'S DATE]\n- **Protection Level:** CRITICAL - Any modification will break SSE progress tracking\n- **Dependencies:** Express server, child process stdout parsing\n\n### [Add more working components from audit-reports/detailed-analysis.md marked as \"core\" or \"active\"]\n\n---\n\n## 🔍 BROKEN COMPONENTS - NEEDS FIXING\n\n### deep-research-orchestrator.cjs::splitQuery()\n- **Problem:** Uses wrong API format for Gemini\n- **Specific Issue:** Uses OpenAI-style `response_format` parameter with Gemini endpoint\n- **Impact:** Query splitting phase fails immediately\n- **Current Code (Line ~72):**\n  ```javascript\n  response_format: {\n    type: \"json_schema\",\n    json_schema: { /* ... */ }\n  }\n  ```\n- **Correct Approach:** Use Gemini's `generationConfig` format:\n  ```javascript\n  generationConfig: {\n    responseMimeType: \"application/json\",\n    responseSchema: { /* ... */ }\n  }\n  ```\n- **Priority:** P0 - Blocks entire research workflow\n- **Verification Needed:** Test Gemini API endpoint with correct format\n- **Fallback:** OpenRouter with gpt-4o-mini (already implemented)\n\n### deep-research-orchestrator.cjs::consolidateResults()\n- **Problem:** Uses non-existent model 'openai/gpt-5'\n- **Current Code (Line ~279):**\n  ```javascript\n  model: 'openai/gpt-5'\n  ```\n- **Reality:** This model doesn't exist on OpenRouter\n- **Impact:** Consolidation phase fails after 30+ minutes of research\n- **Correct Models:** 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'\n- **Priority:** P0 - Blocks final report generation\n- **Verification Needed:** List available OpenRouter models\n\n### deep-research-orchestrator.cjs::extractResearchResult()\n- **Problem:** Clipboard extraction is primary method but fails in headless Chrome\n- **Current Flow:** Clipboard (unreliable) → DOM fallback\n- **Correct Flow:** DOM primary → Clipboard fallback\n- **Impact:** ~50% extraction failure rate in production\n- **Priority:** P1 - Reduces research success rate\n- **Implementation:** Invert try order in extraction function\n\n---\n\n## 🔌 API VERIFICATION STATUS\n\n### Gemini API\n- **Endpoint:** https://generativelanguage.googleapis.com/v1beta/openai/\n- **Model Used:** gemini-2.0-flash-exp\n- **Parameter Format:** ❌ UNVERIFIED - Using OpenAI format, may not be supported\n- **Status:** 🚨 NEEDS TESTING BEFORE PRODUCTION\n- **Test Command:**\n  ```bash\n  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp \\\n    -H \"Authorization: Bearer $GEMINI_API_KEY\"\n  ```\n- **Fallback:** OpenRouter with gpt-4o-mini ✅ CONFIGURED\n\n### OpenRouter API\n- **Endpoint:** https://openrouter.ai/api/v1\n- **Model Used:** openai/gpt-5\n- **Status:** ❌ MODEL DOES NOT EXIST\n- **Action Required:** Replace with valid model\n- **List Models Command:**\n  ```bash\n  curl https://openrouter.ai/api/v1/models \\\n    -H \"Authorization: Bearer $OPENROUTER_API_KEY\" | jq '.data[] | .id'\n  ```\n- **Recommended Models:** openai/gpt-4o, anthropic/claude-3.5-sonnet\n\n---\n\n## 🏗️ ARCHITECTURAL DECISIONS\n\n### Decision: Dual Frontend Architecture (Vite Dev + Express Prod)\n- **Rationale:** Fast HMR in dev, single-server simplicity in prod\n- **Trade-off:** Two different serving mechanisms to maintain\n- **Status:** ✅ WORKING but adds complexity\n- **Future Consideration:** Unify on single architecture\n\n### Decision: Browser Automation for AI Interaction\n- **Rationale:** No official Gemini Deep Research API\n- **Trade-off:** Brittle DOM selectors, manual auth required\n- **Status:** ⚠️ FRAGILE - UI changes break system\n- **Risk:** High maintenance overhead\n- **Future Consideration:** Monitor for official API release\n\n### Decision: Fresh Browser Contexts Per Session\n- **Rationale:** Prevents SingletonLock conflicts from persistent profiles\n- **Trade-off:** Requires manual Google login for each deployment\n- **Status:** ✅ WORKING but not ideal\n- **Current Code:** Uses temp profiles `/tmp/chrome-profile-{timestamp}-{random}`\n- **Future Consideration:** Implement programmatic OAuth\n\n---\n\n## 📁 FILE SYSTEM DEPENDENCIES\n\n### Base Output Path\n- **Path:** /Users/macuser/Documents/ChetasVault/Agent output/\n- **Status:** ❌ HARDCODED - Not cross-platform\n- **Issue:** No existence check before write operations\n- **Priority:** P2 - Will fail on different systems\n- **Solution Needed:** Environment variable + directory creation script\n\n### Required Subdirectories\n- YT-transcription-summaries/final-reports/\n- Deeper Research/queries/\n- Deeper Research/intermediate/\n- Deeper Research/consolidated/\n- Deeper Research/errors/\n\n**Status:** ❌ NOT AUTO-CREATED\n**Solution:** Run `node scripts/init-directories.cjs` (needs creation)\n\n---\n\n## 📝 RECENT CHANGES LOG\n\n### 2025-10-15: Fixed missing timestamp variable\n- **File:** scripts/deep-research-orchestrator.cjs\n- **Change:** Added `const timestamp = Date.now()` at line 119 in processInBatches()\n- **Reason:** Variable was referenced in file path construction but never defined\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** File saves now succeed without undefined in path\n- **Side Effects:** None - isolated variable declaration\n\n### 2025-10-15: Backend line buffering implementation\n- **File:** server.cjs\n- **Change:** Implemented proper stdoutBuffer pattern (lines 71-82)\n- **Reason:** Prevented partial JSON parse errors in SSE streaming\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** No more \"Unexpected token\" errors in console\n- **Side Effects:** None - improved stability\n\n### 2025-10-15: Removed duplicate code blocks\n- **File:** scripts/deep-research-orchestrator.cjs\n- **Change:** Removed ~400 lines of duplicate processInBatches() function\n- **Reason:** Code duplication caused confusion and potential version skew\n- **Status:** ✅ VERIFIED WORKING\n- **Verification:** File reduced from ~1200 to ~600 lines, single source of truth\n- **Side Effects:** None - elimination of redundancy\n\n---\n\n## 🔄 MAINTENANCE PROTOCOL\n\n### When to Update This Document\n- After fixing any component (move from BROKEN to WORKING)\n- After discovering new broken components\n- After verifying API endpoints\n- After making architectural decisions\n- After significant code changes\n\n### Update Checklist\n- [ ] Update RECENT CHANGES LOG with date, file, change, reason\n- [ ] Move fixed components from BROKEN to WORKING registry\n- [ ] Update API VERIFICATION STATUS if tested\n- [ ] Update Last Updated date at top\n- [ ] Commit changes (if using git)\n\n---\n\n## 🚨 CRITICAL REMINDERS FOR AI ASSISTANTS\n\nWhen asked to fix bugs or add features:\n\n1. **READ THIS ENTIRE FILE FIRST** - Do not skip sections\n2. **CHECK WORKING COMPONENTS** - Never modify components marked ⚠️\n3. **VERIFY API USAGE** - Check API VERIFICATION STATUS before assuming API behavior\n4. **MAKE SURGICAL CHANGES** - Modify only the specific broken component\n5. **UPDATE THIS FILE** - Add entry to RECENT CHANGES LOG after successful fix\n6. **TEST ASSUMPTIONS** - Don't assume external services work as expected\n\n### Example Good Fix Process:",
+        "lineStart": 3573,
+        "lineEnd": 3767
+      },
+      {
+        "language": "text",
+        "content": "\n### Example Bad Fix Process (DO NOT DO):",
+        "lineStart": 3776,
+        "lineEnd": 3778
+      },
+      {
+        "language": "text",
+        "content": "",
+        "lineStart": 3785,
+        "lineEnd": 3785
+      },
+      {
+        "language": "text",
+        "content": "@audit-reports/detailed-analysis.md\n@.kilocode/rules/memory-bank/systemPatterns.md\n\nUsing the detailed analysis report, help me populate systemPatterns.md:\n\n1. Add all files marked as \"core\" to the WORKING COMPONENTS section\n2. Add all files marked as \"suspicious\" or \"orphaned\" to explain why they were archived\n3. Update API VERIFICATION STATUS based on any external dependencies found\n4. Add any architectural patterns you notice\n\nFormat each entry following the template structure already in systemPatterns.md.",
+        "lineStart": 3799,
+        "lineEnd": 3810
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/brief.md\n\nUpdate this file to accurately reflect the current project state:\n- What is the project? (YouTube Research System)\n- What works? (List from systemPatterns.md WORKING components)\n- What's broken? (List from systemPatterns.md BROKEN components)\n- What was archived? (Reference audit-reports/archival-plan.md)",
+        "lineStart": 3818,
+        "lineEnd": 3825
+      },
+      {
+        "language": "text",
+        "content": "What is the current status of this project based on Memory Bank?",
+        "lineStart": 3833,
+        "lineEnd": 3834
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, the splitQuery() function uses wrong API format for Gemini.\n\nFix ONLY this function:\n1. Replace response_format with generationConfig\n2. Use responseMimeType: \"application/json\"\n3. Use responseSchema instead of json_schema\n4. Do NOT modify any other functions\n5. Provide before/after code comparison\n\nAfter providing the fix, explain what you changed and why.",
+        "lineStart": 3851,
+        "lineEnd": 3864
+      },
+      {
+        "language": "bash",
+        "content": "# Check the specific lines were changed\ngrep -n \"generationConfig\" scripts/deep-research-orchestrator.cjs\n# Should show the new format around line 72-107",
+        "lineStart": 3868,
+        "lineEnd": 3871
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, consolidateResults() uses non-existent model 'openai/gpt-5'.\n\nFix ONLY this line:\n1. Find line ~279 with model: 'openai/gpt-5'\n2. Replace with model: 'openai/gpt-4o'\n3. Do NOT modify any other code\n4. Provide before/after comparison",
+        "lineStart": 3879,
+        "lineEnd": 3889
+      },
+      {
+        "language": "bash",
+        "content": "grep \"openai/gpt-4o\" scripts/deep-research-orchestrator.cjs\n# Should show the corrected model name",
+        "lineStart": 3893,
+        "lineEnd": 3895
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs\n\nAccording to systemPatterns.md, extractResearchResult() has clipboard as primary method but it fails in headless.\n\nFix the extraction order:\n1. Make DOM scraping the PRIMARY method\n2. Make clipboard the FALLBACK method\n3. Keep both methods but invert the try order\n4. Do NOT modify other parts of the function\n5. Provide before/after comparison",
+        "lineStart": 3903,
+        "lineEnd": 3914
+      },
+      {
+        "language": "text",
+        "content": "update memory bank\n\nThe following fixes have been applied and verified:\n1. splitQuery() - Gemini API format corrected\n2. consolidateResults() - Model name fixed to gpt-4o\n3. extractResearchResult() - DOM-primary extraction\n\nMove these components from BROKEN to WORKING in systemPatterns.md and add entries to RECENT CHANGES LOG.",
+        "lineStart": 3922,
+        "lineEnd": 3930
+      },
+      {
+        "language": "bash",
+        "content": "# Test query splitting (if you have API keys set)\nnode -e \"\nconst { splitQuery } = require('./scripts/deep-research-orchestrator.cjs');\nsplitQuery('test query', 3).then(console.log).catch(console.error);\n\"\n\n# Should output JSON with report_title and question_sets",
+        "lineStart": 3939,
+        "lineEnd": 3946
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n@audit-reports/summary.md\n\nCreate a final summary document that includes:\n1. What was archived and why\n2. What was fixed\n3. Current system status (working/broken breakdown)\n4. Next recommended steps\n5. How to use Memory Bank going forward\n\nSave this as docs/context-recovery-summary.md",
+        "lineStart": 3954,
+        "lineEnd": 3965
+      },
+      {
+        "language": "markdown",
+        "content": "# Emergency Context Recovery\n\nIf model starts making blind changes again:\n\n1. Close current Kilo conversation\n2. Start NEW conversation\n3. Type: @.kilocode/rules/memory-bank/systemPatterns.md\n4. Confirm you see [Memory Bank: Active]\n5. State your bug clearly\n6. Ask: \"Before suggesting fixes, what components are marked DO NOT MODIFY?\"\n7. Verify AI reads systemPatterns.md before proposing changes\n\n## Circuit Breaker\n\nIf AI still goes blind after loading Memory Bank:\n\nRun full audit again:",
+        "lineStart": 3974,
+        "lineEnd": 3991
+      },
+      {
+        "language": "text",
+        "content": "\nThen reload Memory Bank and try again.",
+        "lineStart": 3996,
+        "lineEnd": 3998
+      },
+      {
+        "language": "markdown",
+        "content": "# Agentic Swarm Migration Plan\n\n## Tasks Suitable for Parallel Execution\n\nCurrent system runs sequentially. These tasks could run in parallel with agentic swarm:\n\n### Query Splitting → Research → Consolidation Pipeline\n\n**Current:** Sequential (45 min for 9 queries)\n**Agentic:** Parallel (15 min for 9 queries)\n\n**Architecture:**",
+        "lineStart": 4009,
+        "lineEnd": 4021
+      },
+      {
+        "language": "text",
+        "content": "\n**Required Framework:** Claude Code / Warp / CodeFlow / CodeBuff\n**Estimated Speedup:** 3-5x for research phase\n\n---\n\n### Codebase Audit → Classification → Archival\n\n**Current:** Sequential analysis (10 min)\n**Agentic:** Parallel analysis (2 min)\n\n**Architecture:**",
+        "lineStart": 4030,
+        "lineEnd": 4042
+      },
+      {
+        "language": "text",
+        "content": "\n**Estimated Speedup:** 5x for large codebases\n\n---\n\n## Stem Files for Migration\n\nCreate these files when ready to migrate:\n\n### `agentic/coordinator.yaml`\n- Define agent roles\n- Task assignment logic\n- Communication protocols\n\n### `agentic/agents/query-splitter.yaml`\n- Gemini API interface\n- JSON schema enforcement\n- Error handling\n\n### `agentic/agents/research-worker.yaml`\n- Playwright browser management\n- Extraction strategies\n- Result formatting\n\n### `agentic/agents/consolidator.yaml`\n- GPT-4o interface\n- Report synthesis\n- Markdown generation\n\n### Migration Trigger\nWhen codebase exceeds 1000 files OR research requires >20 parallel queries",
+        "lineStart": 4052,
+        "lineEnd": 4083
+      },
+      {
+        "language": "bash",
+        "content": "# Check all key files exist\nls -lh scripts/codebase-mapper.cjs\nls -lh scripts/validate-post-archive.cjs\nls -lh .kilocode/rules/memory-bank/systemPatterns.md\nls -lh audit-reports/summary.md\nls -lh docs/context-recovery-summary.md\nls -lh docs/EMERGENCY-RECOVERY.md\nls -lh docs/AGENTIC-MIGRATION-PLAN.md\n\n# All should show files with content",
+        "lineStart": 4102,
+        "lineEnd": 4112
+      },
+      {
+        "language": "text",
+        "content": "@.kilocode/rules/memory-bank/systemPatterns.md\n\nPerform system health check:\n1. How many components are marked WORKING?\n2. How many are marked BROKEN?\n3. Are there any CRITICAL priority issues remaining?\n4. What is the recommended next step?",
+        "lineStart": 4118,
+        "lineEnd": 4125
+      }
+    ],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 3289,
+      "endLine": 4155
+    },
+    "tags": [],
+    "severity": "critical",
+    "category": "general"
+  },
+  {
+    "id": "artifact-9",
+    "title": "D",
+    "description": "",
+    "codeBlocks": [],
+    "lessons": [],
+    "contextLines": [],
+    "sourceLocation": {
+      "file": "./ARTIFACTS.md",
+      "startLine": 4157,
+      "endLine": 4194
+    },
+    "tags": [],
+    "severity": "medium",
+    "category": "general"
+  }
+]

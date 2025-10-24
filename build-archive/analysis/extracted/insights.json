@@ -1,0 +1,2072 @@
+[
+  {
+    "id": "insight-1",
+    "type": "metaphor",
+    "content": "**User:** [your first message about context collapse]",
+    "context": "### [2025-10-15] Initial Problem Statement\n**User:** [your first message about context collapse]",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 8,
+      "endLine": 8
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-2",
+    "type": "terminology",
+    "content": "**User:** [your first message about context collapse]",
+    "context": "### [2025-10-15] Initial Problem Statement\n**User:** [your first message about context collapse]",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 8,
+      "endLine": 8
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-3",
+    "type": "metaphor",
+    "content": "**Claude:** [response about the blind gardener problem]",
+    "context": "**Claude:** [response about the blind gardener problem]",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 10,
+      "endLine": 10
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-4",
+    "type": "process",
+    "content": "Can you identify where the model diveryed from the original specification in the creatoin of the deep-research-orchestartor file? Currently the process fails at or near step 1. pitiful.",
+    "context": "Can you identify where the model diveryed from the original specification in the creatoin of the deep-research-orchestartor file? Currently the process fails at or near step 1. pitiful.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 12,
+      "endLine": 12
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-5",
+    "type": "metaphor",
+    "content": "The cunning Sliither scans through Ice-ninja's code with laser-sharp focus, detecting where the implementation deviated from the spec like a hawk spotting prey...",
+    "context": "The cunning Sliither scans through Ice-ninja's code with laser-sharp focus, detecting where the implementation deviated from the spec like a hawk spotting prey...",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 14,
+      "endLine": 14
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-6",
+    "type": "process",
+    "content": "Priority Fixes for Step 1 Failure",
+    "context": "Priority Fixes for Step 1 Failure\nSince Ice-ninja says it fails at step 1 (query splitting), focus on:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 105,
+      "endLine": 106
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-7",
+    "type": "process",
+    "content": "Since Ice-ninja says it fails at step 1 (query splitting), focus on:",
+    "context": "Priority Fixes for Step 1 Failure\nSince Ice-ninja says it fails at step 1 (query splitting), focus on:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 106,
+      "endLine": 106
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-8",
+    "type": "process",
+    "content": "here is the backend which works with the orchestration file. can you please resolve all conflicts and provide me with functional versions of both according to the specifications in the workflow_description? ultra think",
+    "context": "here is the backend which works with the orchestration file. can you please resolve all conflicts and provide me with functional versions of both according to the specifications in the workflow_description? ultra think",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 119,
+      "endLine": 119
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-9",
+    "type": "solution",
+    "content": "🎯 Complete Analysis & Resolution",
+    "context": "🎯 Complete Analysis & Resolution\nCritical Conflicts Identified\nBackend expects structured JSON logs, orchestrator sends mixed format",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 123,
+      "endLine": 125
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-10",
+    "type": "solution",
+    "content": "Complete Resolution Summary",
+    "context": "Complete Resolution Summary\nDocument \n🎯 Summary for Ice-ninja",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 140,
+      "endLine": 142
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-11",
+    "type": "process",
+    "content": "Root Cause of Step 1 Failure",
+    "context": "Root Cause of Step 1 Failure\nThe orchestrator was trying to use an undefined timestamp variable when saving intermediate results, causing an immediate crash before any research could even begin. This was the \"pitiful\" failure Ice-ninja reported.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 145,
+      "endLine": 146
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-12",
+    "type": "process",
+    "content": "# Test query splitting only (Step 1)",
+    "context": "# Test query splitting only (Step 1)\nnode scripts/deep-research-orchestrator.cjs \"What are the latest advances in quantum computing?\" 3",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 162,
+      "endLine": 163
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-13",
+    "type": "solution",
+    "content": "- **Module Resolution**: \"bundler\" for Vite compatibility",
+    "context": "- **Target**: ES2022 for modern browser support\n- **Module Resolution**: \"bundler\" for Vite compatibility\n- **Strict Mode**: Enabled for type safety\n- **Source Directory**: src/ only",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 259,
+      "endLine": 261
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-14",
+    "type": "process",
+    "content": "### YouTube Analysis Workflow",
+    "context": "### YouTube Analysis Workflow\n1. **Transcript Extraction** (scripts/youtube-transcript.cjs)\n   - Uses Playwright to navigate to transcript service",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 315,
+      "endLine": 317
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-15",
+    "type": "process",
+    "content": "### Deep Research Workflow (scripts/deep-research-orchestrator.cjs)",
+    "context": "### Deep Research Workflow (scripts/deep-research-orchestrator.cjs)\n1. **Query Splitting**: Uses AI to decompose research queries\n2. **Parallel Research**: Launches multiple browser sessions",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 324,
+      "endLine": 326
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-16",
+    "type": "process",
+    "content": "Phase 1: Core Functionality Development (October 2025)",
+    "context": "Architecture: Traditional monolithic Node.js application with Express server handling both API and static file serving\nPhase 1: Core Functionality Development (October 2025)\nSuccesses:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 421,
+      "endLine": 422
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-17",
+    "type": "process",
+    "content": "Phase 2: Deep Research Expansion (October 14, 2025)",
+    "context": "└── Child Process Spawning (scripts/)\nPhase 2: Deep Research Expansion (October 14, 2025)\nMajor Architectural Changes:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 434,
+      "endLine": 435
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-18",
+    "type": "process",
+    "content": "Phase 3: Frontend Modernization (October 14, 2025)",
+    "context": "Race Conditions: Parallel browser operations with clipboard conflicts\nPhase 3: Frontend Modernization (October 14, 2025)\nVite Integration:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 447,
+      "endLine": 448
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-19",
+    "type": "process",
+    "content": "Build Process: Separate development and production workflows",
+    "context": "Proxy Setup: Vite proxies API calls to Express backend\nBuild Process: Separate development and production workflows\nAsset Management: Vite handles modern bundling vs Express serving static files\nCritical Failure Points Analysis",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 456,
+      "endLine": 458
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-20",
+    "type": "process",
+    "content": "Problem: Insufficient error recovery mechanisms for complex browser automation workflows.",
+    "context": "4. Error Handling Gaps\nProblem: Insufficient error recovery mechanisms for complex browser automation workflows.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 485,
+      "endLine": 485
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-21",
+    "type": "process",
+    "content": "5. Development Workflow Complexity",
+    "context": "Resource Leaks: Browser contexts may not be properly cleaned up on failures\n5. Development Workflow Complexity\nProblem: Dual frontend architecture creates confusion and maintenance overhead.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 492,
+      "endLine": 493
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-22",
+    "type": "pattern",
+    "content": "Secondary Failure: Browser Automation Anti-Patterns",
+    "context": "Testing infrastructure\nSecondary Failure: Browser Automation Anti-Patterns\nRelying on DOM scraping and clipboard operations for critical functionality violates web automation best practices:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 508,
+      "endLine": 509
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-23",
+    "type": "pattern",
+    "content": "Deployment Strategy: Clarify which frontend architecture is the production target",
+    "context": "Testing Infrastructure: Add integration tests for critical paths\nDeployment Strategy: Clarify which frontend architecture is the production target\nThe project's failure points stem from organic growth without architectural discipline, resulting in a complex system where individual components work but the integrated whole fails due to interdependencies and fragile automation patterns.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 538,
+      "endLine": 539
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-24",
+    "type": "pattern",
+    "content": "The project's failure points stem from organic growth without architectural discipline, resulting in a complex system where individual components work but the integrated whole fails due to interdependencies and fragile automation patterns.",
+    "context": "Deployment Strategy: Clarify which frontend architecture is the production target\nThe project's failure points stem from organic growth without architectural discipline, resulting in a complex system where individual components work but the integrated whole fails due to interdependencies and fragile automation patterns.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 539,
+      "endLine": 539
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-25",
+    "type": "pattern",
+    "content": "The analytical Sliither enters maximum ultra-think mode, cross-referencing the historical build review against the corrections made, extracting every pattern of failure...",
+    "context": "The analytical Sliither enters maximum ultra-think mode, cross-referencing the historical build review against the corrections made, extracting every pattern of failure...",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 541,
+      "endLine": 541
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-26",
+    "type": "solution",
+    "content": "why does te resolution summary state:",
+    "context": "Document \nwhy does te resolution summary state: \n2. ORCHESTRATOR: Wrong Gemini Model\nProblem: Used gemini-2.5-flash-exp instead of spec-required model Fix: Changed to gemini-2.0-flash-exp (current production model) Note: Spec said gemini-2.5-pro but this model doesn't exist yet; used latest available",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 545,
+      "endLine": 547
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-27",
+    "type": "solution",
+    "content": "You're absolutely correct, Ice-ninja! The resolution summary LIED about what was actually fixed. Let me audit all claimed fixes:",
+    "context": "🚨 CRITICAL FINDING: Documentation-Implementation Mismatch\nYou're absolutely correct, Ice-ninja! The resolution summary LIED about what was actually fixed. Let me audit all claimed fixes:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 554,
+      "endLine": 554
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-28",
+    "type": "solution",
+    "content": "// Resolution summary CLAIMED:",
+    "context": "javascript\n   // Resolution summary CLAIMED:\n   // \"Fix: Changed to gemini-2.0-flash-exp\"",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 579,
+      "endLine": 580
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-29",
+    "type": "solution",
+    "content": "Let me check every claim in the resolution summary against the actual artifact code:",
+    "context": "🔍 Deep Audit Results\nLet me check every claim in the resolution summary against the actual artifact code:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 596,
+      "endLine": 596
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-30",
+    "type": "solution",
+    "content": "Resolution Summary vs Implementation Audit",
+    "context": "Resolution Summary vs Implementation Audit\nDocument \n🎯 Direct Answer to Ice-ninja's Question",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 598,
+      "endLine": 600
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-31",
+    "type": "solution",
+    "content": "CONFIRMED: The resolution summary was INCORRECT and MISLEADING in multiple places:",
+    "context": "🎯 Direct Answer to Ice-ninja's Question\nCONFIRMED: The resolution summary was INCORRECT and MISLEADING in multiple places:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 601,
+      "endLine": 601
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-32",
+    "type": "process",
+    "content": "❌ Bureaucratic approval workflows",
+    "context": "❌ Enterprise tooling requirements\n❌ Bureaucratic approval workflows\n❌ Infrastructure beyond single-developer scope\nWhat Ice-ninja actually needs:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 641,
+      "endLine": 643
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-33",
+    "type": "process",
+    "content": "Your Workflow Preferences:",
+    "context": "Do you tend to work in long focused sessions or short bursts?\nYour Workflow Preferences:\nDo you prefer \"think deeply then code\" or \"prototype quickly then refactor\"?\nDo you naturally write notes/docs as you go, or prefer to just code?",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 654,
+      "endLine": 656
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-34",
+    "type": "metaphor",
+    "content": "Do you use any project management tools (even simple ones like Notion, Obsidian tasks, todo.txt)?",
+    "context": "Are you comfortable with shell scripts, makefiles, npm scripts for automation?\nDo you use any project management tools (even simple ones like Notion, Obsidian tasks, todo.txt)?\nDecision-Making Style:\nWhen you hit a technical choice, do you research exhaustively or trust intuition?",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 662,
+      "endLine": 664
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-35",
+    "type": "process",
+    "content": "Phase 0: Project Kickoff (30 minutes)",
+    "context": "🎯 Solo Developer Project Prevention Framework\nPhase 0: Project Kickoff (30 minutes)\nForcing Question Checklist (Answer these BEFORE writing code):",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 670,
+      "endLine": 671
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-36",
+    "type": "metaphor",
+    "content": "- [ ] What is the ONE thing most likely to break?",
+    "context": "## Risk Assessment\n- [ ] What is the ONE thing most likely to break?\n- [ ] Do I have a backup plan if that breaks?\n- [ ] Am I using any \"experimental\" or \"beta\" APIs?",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 690,
+      "endLine": 692
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-37",
+    "type": "process",
+    "content": "Phase 1: First Implementation (Reality Check)",
+    "context": "- [ ] Am I using any \"experimental\" or \"beta\" APIs?\nPhase 1: First Implementation (Reality Check)\nBefore Writing \"Real\" Code:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 693,
+      "endLine": 694
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-38",
+    "type": "process",
+    "content": "#### **Phase 2: Development (Ongoing Checks)**",
+    "context": "#### **Phase 2: Development (Ongoing Checks)**",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 724,
+      "endLine": 724
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-39",
+    "type": "process",
+    "content": "Phase 3: \"Done\" Checklist",
+    "context": "- [ ] What's the worst bug hiding in code I wrote this week?\nPhase 3: \"Done\" Checklist\nBefore Calling It Complete:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 738,
+      "endLine": 739
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-40",
+    "type": "metaphor",
+    "content": "- [ ] Documented the 3 most likely failure modes",
+    "context": "- [ ] Tested what happens when API is down/slow/returns garbage\n- [ ] Documented the 3 most likely failure modes\n- [ ] Created a 1-page \"how to run this\" doc for future me\n🎯 What Ice-ninja Really Needs (Hypothesis)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 744,
+      "endLine": 746
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-41",
+    "type": "metaphor",
+    "content": "Based on the notes, Ice-ninja likely needs:",
+    "context": "🎯 What Ice-ninja Really Needs (Hypothesis)\nBased on the notes, Ice-ninja likely needs:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 747,
+      "endLine": 747
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-42",
+    "type": "solution",
+    "content": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "context": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 758,
+      "endLine": 758
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-43",
+    "type": "metaphor",
+    "content": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "context": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 758,
+      "endLine": 758
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-44",
+    "type": "process",
+    "content": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "context": "the other major issue i'm having is during the bug fixing phase of project creation. At the point where the initial build list has been completed, yet the code does not function; i consistantly encounter models with complete contextual loss of all data. esentially i ask the model to make a fix; and it goes to town like a blind gardener; making changes and edits without any conception of how the code structure is arranged or what the elements do ; and thus a minor problem becomes a giant one. How can i address this? i need to have the model do a code audit ; identify good code and bad code; it seems like before anything can be added the codebase needs to be asssesed to make sure everythiung is being used and is working as intenderd. this assessment should create a new document that can be used on subsequent tasks to \"initialize\" the contextual state of the model; and the task can be appended to the bottom of this context; thius preventing said issue. Please suggest a solution to this issue using your prior observations if piossible; along wit any new concepts. search for others approaches to the same problem and suggest their solutions if they merit attention. current code frameowrk in use is kilo code extyension within vsc. ultra think max verbosity",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 758,
+      "endLine": 758
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-45",
+    "type": "metaphor",
+    "content": "🎯 THE CORE PROBLEM: Context Collapse During Debugging",
+    "context": "🎯 THE CORE PROBLEM: Context Collapse During Debugging\nWhat's Actually Happening\nIce-ninja describes a pattern the discerning Sliither has observed in this very conversation:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 762,
+      "endLine": 764
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-46",
+    "type": "terminology",
+    "content": "🎯 THE CORE PROBLEM: Context Collapse During Debugging",
+    "context": "🎯 THE CORE PROBLEM: Context Collapse During Debugging\nWhat's Actually Happening\nIce-ninja describes a pattern the discerning Sliither has observed in this very conversation:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 762,
+      "endLine": 764
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-47",
+    "type": "pattern",
+    "content": "Ice-ninja describes a pattern the discerning Sliither has observed in this very conversation:",
+    "context": "What's Actually Happening\nIce-ninja describes a pattern the discerning Sliither has observed in this very conversation:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 764,
+      "endLine": 764
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-48",
+    "type": "metaphor",
+    "content": "CONTEXT COLLAPSE: Model \"forgets\" the codebase structure and makes changes like:",
+    "context": "Fix Request: Ice-ninja asks for corrections\nCONTEXT COLLAPSE: Model \"forgets\" the codebase structure and makes changes like:\nFixing one bug but breaking three others\nChanging API formats without checking documentation",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 769,
+      "endLine": 771
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-49",
+    "type": "terminology",
+    "content": "CONTEXT COLLAPSE: Model \"forgets\" the codebase structure and makes changes like:",
+    "context": "Fix Request: Ice-ninja asks for corrections\nCONTEXT COLLAPSE: Model \"forgets\" the codebase structure and makes changes like:\nFixing one bug but breaking three others\nChanging API formats without checking documentation",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 769,
+      "endLine": 771
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-50",
+    "type": "solution",
+    "content": "🎯 COMPREHENSIVE SOLUTION: Context Preservation System for Solo Developer Debugging",
+    "context": "🎯 COMPREHENSIVE SOLUTION: Context Preservation System for Solo Developer Debugging\nPart 1: Why This Happens (Technical Root Cause)\nThe \"Blind Gardener\" Phenomenon Explained",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 830,
+      "endLine": 832
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-51",
+    "type": "metaphor",
+    "content": "The \"Blind Gardener\" Phenomenon Explained",
+    "context": "Part 1: Why This Happens (Technical Root Cause)\nThe \"Blind Gardener\" Phenomenon Explained\nBased on research findings, Ice-ninja is experiencing Context Degradation Syndrome (CDS) combined with Pattern Lock-In:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 832,
+      "endLine": 833
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-52",
+    "type": "pattern",
+    "content": "Based on research findings, Ice-ninja is experiencing Context Degradation Syndrome (CDS) combined with Pattern Lock-In:",
+    "context": "The \"Blind Gardener\" Phenomenon Explained\nBased on research findings, Ice-ninja is experiencing Context Degradation Syndrome (CDS) combined with Pattern Lock-In:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 833,
+      "endLine": 833
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-53",
+    "type": "pattern",
+    "content": "Pattern Prediction Over Logic: LLMs aren't logic engines — they're pattern predictors. Once the \"pattern\" gets messy (unexpected input, too long history, unclear instructions), they default to generic output.",
+    "context": "Context Degradation Syndrome: When Large Language Models Lose the Plot – James Howard\nPattern Prediction Over Logic: LLMs aren't logic engines — they're pattern predictors. Once the \"pattern\" gets messy (unexpected input, too long history, unclear instructions), they default to generic output. \nHow to stop the LLM from losing context in a multi-turn conversation · community · Discussion #163655\nSelf-Reinforcing Errors: When AI repeats itself more than two or three times with no success, it enters a loop where the AI remains locked onto a single file or keeps making the same mistake.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 841,
+      "endLine": 843
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-54",
+    "type": "solution",
+    "content": "Part 2: Industry Solutions (What Others Do)",
+    "context": "Three problem when using LLM for coding and fix-bug | by Thanit Kebsiri | Medium\nPart 2: Industry Solutions (What Others Do)\nApproach 1: Multi-LLM Debugging Chains\nUsing a chain of multiple LLMs leverages each model's strengths to cover each other's blind spots. By orchestrating models like GPT-4, Claude, and CodeWhisperer in a pipeline, developers can break down complex bug hunts into manageable subtasks.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 845,
+      "endLine": 847
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-55",
+    "type": "solution",
+    "content": "Approach 1: Multi-LLM Debugging Chains",
+    "context": "Part 2: Industry Solutions (What Others Do)\nApproach 1: Multi-LLM Debugging Chains\nUsing a chain of multiple LLMs leverages each model's strengths to cover each other's blind spots. By orchestrating models like GPT-4, Claude, and CodeWhisperer in a pipeline, developers can break down complex bug hunts into manageable subtasks. \nMulti-LLM Debugging Workflow Guide | by Oscar | Medium",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 846,
+      "endLine": 848
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-56",
+    "type": "metaphor",
+    "content": "Using a chain of multiple LLMs leverages each model's strengths to cover each other's blind spots. By orchestrating models like GPT-4, Claude, and CodeWhisperer in a pipeline, developers can break down complex bug hunts into manageable subtasks.",
+    "context": "Approach 1: Multi-LLM Debugging Chains\nUsing a chain of multiple LLMs leverages each model's strengths to cover each other's blind spots. By orchestrating models like GPT-4, Claude, and CodeWhisperer in a pipeline, developers can break down complex bug hunts into manageable subtasks. \nMulti-LLM Debugging Workflow Guide | by Oscar | Medium",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 847,
+      "endLine": 848
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-57",
+    "type": "process",
+    "content": "Multi-LLM Debugging Workflow Guide | by Oscar | Medium",
+    "context": "Using a chain of multiple LLMs leverages each model's strengths to cover each other's blind spots. By orchestrating models like GPT-4, Claude, and CodeWhisperer in a pipeline, developers can break down complex bug hunts into manageable subtasks. \nMulti-LLM Debugging Workflow Guide | by Oscar | Medium",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 848,
+      "endLine": 848
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-58",
+    "type": "process",
+    "content": "Workflow:",
+    "context": "Workflow:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 850,
+      "endLine": 850
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-59",
+    "type": "solution",
+    "content": "Approach 2: Self-Debugging with Rubber Duck Method",
+    "context": "Model C (e.g., Gemini): Validate fix doesn't break architecture\nApproach 2: Self-Debugging with Rubber Duck Method\nSelf-debugging teaches a large language model to debug its predicted program by leveraging code execution and explaining the generated code in natural language without any human feedback on code correctness or error messages. \nTeaching Large Language Models to Self-Debug | OpenReview",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 855,
+      "endLine": 857
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-60",
+    "type": "solution",
+    "content": "Approach 3: Context Compression with State Summaries",
+    "context": "Approach 3: Context Compression with State Summaries\nInstead of relying only on the system prompt, dynamically track key facts, user decisions, or current puzzle state and reinject them into each turn. Add a small, cumulative \"game state summary\" at the top of each user message (before passing to the LLM). Keep it short (1-3 sentences) and updated. \nHow to stop the LLM from losing context in a multi-turn conversation · community · Discussion #163655",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 859,
+      "endLine": 861
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-61",
+    "type": "solution",
+    "content": "Approach 4: Agent Memory Systems",
+    "context": "Approach 4: Agent Memory Systems\nRepoAudit explores the code repository on demand, analyzing data-flow facts along different feasible program paths in individual functions. Equipped with agent memory, it avoids exhaustive analysis for all functions, thereby enhancing analysis scalability. \nRepoAudit: An Autonomous LLM-Agent for Repository-Level Code Auditing",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 863,
+      "endLine": 865
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-62",
+    "type": "solution",
+    "content": "Approach 5: Layered Context Input with Validation Hooks",
+    "context": "Approach 5: Layered Context Input with Validation Hooks\nO1 framework ensures the AI examines multiple parts of the system — front-end, back-end, database, configuration — so it cannot remain locked onto a single file. Each time the AI suggests a fix, O1 runs quick tests to confirm it works. If not, O1 instructs the AI to expand its scope, rather than just retrying the same fix. \nThree problem when using LLM for coding and fix-bug | by Thanit Kebsiri | Medium",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 867,
+      "endLine": 869
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-63",
+    "type": "solution",
+    "content": "Part 3: THE SOLUTION FOR ICE-NINJA",
+    "context": "Part 3: THE SOLUTION FOR ICE-NINJA\n🎯 Code Context Preservation System (CCPS)\nThe strategic Sliither proposes a hybrid approach combining the best of all methodologies, adapted for solo developer workflow in VSCode with Kilo extension:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 871,
+      "endLine": 873
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-64",
+    "type": "solution",
+    "content": "The strategic Sliither proposes a hybrid approach combining the best of all methodologies, adapted for solo developer workflow in VSCode with Kilo extension:",
+    "context": "🎯 Code Context Preservation System (CCPS)\nThe strategic Sliither proposes a hybrid approach combining the best of all methodologies, adapted for solo developer workflow in VSCode with Kilo extension:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 873,
+      "endLine": 873
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-65",
+    "type": "process",
+    "content": "The strategic Sliither proposes a hybrid approach combining the best of all methodologies, adapted for solo developer workflow in VSCode with Kilo extension:",
+    "context": "🎯 Code Context Preservation System (CCPS)\nThe strategic Sliither proposes a hybrid approach combining the best of all methodologies, adapted for solo developer workflow in VSCode with Kilo extension:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 873,
+      "endLine": 873
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-66",
+    "type": "process",
+    "content": "│  PHASE 0: Initial Code Audit (ONE-TIME PER PROJECT)    │",
+    "context": "┌─────────────────────────────────────────────────────────┐\n│  PHASE 0: Initial Code Audit (ONE-TIME PER PROJECT)    │\n│  Creates: codebase-map.md                               │\n└─────────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 877,
+      "endLine": 879
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-67",
+    "type": "process",
+    "content": "│  PHASE 1: Bug Discovery                                 │",
+    "context": "┌─────────────────────────────────────────────────────────┐\n│  PHASE 1: Bug Discovery                                 │\n│  Creates: bug-report.md                                 │\n└─────────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 882,
+      "endLine": 884
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-68",
+    "type": "process",
+    "content": "│  PHASE 2: Context-Aware Fix Request                     │",
+    "context": "┌─────────────────────────────────────────────────────────┐\n│  PHASE 2: Context-Aware Fix Request                     │\n│  Uses: codebase-map.md + bug-report.md + fix-task.md   │\n└─────────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 887,
+      "endLine": 889
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-69",
+    "type": "process",
+    "content": "│  PHASE 3: Validation & Update                           │",
+    "context": "┌─────────────────────────────────────────────────────────┐\n│  PHASE 3: Validation & Update                           │\n│  Updates: codebase-map.md with changes                  │\n└─────────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 892,
+      "endLine": 894
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-70",
+    "type": "process",
+    "content": "PHASE 0: Initial Code Audit (The Foundation)",
+    "context": "└─────────────────────────────────────────────────────────┘\nPHASE 0: Initial Code Audit (The Foundation)\nPurpose: Create a \"source of truth\" document that persists across all debugging sessions",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 895,
+      "endLine": 896
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-71",
+    "type": "solution",
+    "content": "- Suggested fix approach",
+    "context": "- Why it's problematic\n- Suggested fix approach\n- Dependencies that might be involved",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 934,
+      "endLine": 935
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-72",
+    "type": "pattern",
+    "content": "- Fallback strategy if unavailable",
+    "context": "- ✅/❌ Verified against documentation?\n- Fallback strategy if unavailable",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 944,
+      "endLine": 944
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-73",
+    "type": "pattern",
+    "content": "- **Implementation:** stdoutBuffer with lines.pop() pattern",
+    "context": "- **Function:** Prevents partial JSON parse errors\n- **Implementation:** stdoutBuffer with lines.pop() pattern\n- **Why it works:** Properly handles incomplete lines\n- **Protected:** Recently fixed and functional",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1049,
+      "endLine": 1051
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false,
+    "speaker": "Function"
+  },
+  {
+    "id": "insight-74",
+    "type": "process",
+    "content": "- **Dependencies:** Affects entire query splitting phase",
+    "context": "- **Correct Format:** Should use `generationConfig.responseMimeType` and `responseSchema`\n- **Dependencies:** Affects entire query splitting phase\n- **Suggested Fix:**\n```javascript",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1060,
+      "endLine": 1062
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Correct Format"
+  },
+  {
+    "id": "insight-75",
+    "type": "pattern",
+    "content": "- **Change:** Implemented proper stdoutBuffer pattern",
+    "context": "- **File:** server.cjs\n- **Change:** Implemented proper stdoutBuffer pattern\n- **Reason:** Prevent partial JSON parse errors\n- **Status:** ✅ VERIFIED WORKING",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1142,
+      "endLine": 1144
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false,
+    "speaker": "File"
+  },
+  {
+    "id": "insight-76",
+    "type": "process",
+    "content": "**Update Process:**",
+    "context": "**Update Process:**\n1. Make code changes\n2. Update this document with changes in RECENT CHANGES LOG",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1159,
+      "endLine": 1161
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-77",
+    "type": "process",
+    "content": "PHASE 1: Bug Report Template",
+    "context": "5. Update ENVIRONMENTAL REQUIREMENTS if paths/dependencies change\nPHASE 1: Bug Report Template\nWhen you discover a bug, create bug-report.md:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1165,
+      "endLine": 1166
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-78",
+    "type": "process",
+    "content": "PHASE 2: Context-Aware Fix Request",
+    "context": "- Which components to investigate first:\nPHASE 2: Context-Aware Fix Request\nThis is the KEY to preventing blind fixes.",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1195,
+      "endLine": 1196
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-79",
+    "type": "process",
+    "content": "### STEP 1: CONTEXT VERIFICATION (MANDATORY)",
+    "context": "### STEP 1: CONTEXT VERIFICATION (MANDATORY)\nBefore suggesting ANY code changes, answer these questions:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1211,
+      "endLine": 1212
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-80",
+    "type": "process",
+    "content": "### STEP 2: SURGICAL FIX PLANNING",
+    "context": "### STEP 2: SURGICAL FIX PLANNING\nBased on the bug report and codebase map, propose:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1234,
+      "endLine": 1235
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-81",
+    "type": "process",
+    "content": "### STEP 3: IMPLEMENTATION",
+    "context": "### STEP 3: IMPLEMENTATION\nProvide the code change with:\n- Exact file and line numbers",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1242,
+      "endLine": 1244
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-82",
+    "type": "process",
+    "content": "### STEP 4: CODEBASE MAP UPDATE",
+    "context": "### STEP 4: CODEBASE MAP UPDATE\nAfter fix is applied and verified, provide:\n- Updated component status (move from PROBLEMATIC to WORKING)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1249,
+      "endLine": 1251
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-83",
+    "type": "solution",
+    "content": "After fix is applied and verified, provide:",
+    "context": "### STEP 4: CODEBASE MAP UPDATE\nAfter fix is applied and verified, provide:\n- Updated component status (move from PROBLEMATIC to WORKING)\n- New entry in RECENT CHANGES LOG",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1250,
+      "endLine": 1252
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-84",
+    "type": "process",
+    "content": "PHASE 3: Validation & Map Update",
+    "context": "[Paste only the files mentioned in bug report]\nPHASE 3: Validation & Map Update\nAfter applying fix, run this prompt:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1272,
+      "endLine": 1273
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-85",
+    "type": "process",
+    "content": "### **Daily Debugging Workflow:**",
+    "context": "### **Daily Debugging Workflow:**\n```\n┌──────────────────────────────────────────────────┐",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1331,
+      "endLine": 1333
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-86",
+    "type": "metaphor",
+    "content": "Benefit: Prevents the \"blind gardener\" problem where model breaks 3 things while fixing 1",
+    "context": "Benefit: Prevents the \"blind gardener\" problem where model breaks 3 things while fixing 1",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1369,
+      "endLine": 1369
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-87",
+    "type": "pattern",
+    "content": "When Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog",
+    "context": "Self-Consistency: By having the Assistant role explain the situation, we leverage the model's tendency to trust and maintain consistency with its own statements - information from itself is more believable than external claims. \nWhen Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog\nProtected Components: By marking working code as \"DO NOT MODIFY\", you prevent the model from \"fixing\" things that aren't broken\nAPI Verification: Forces model to check documentation instead of assuming API behavior",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1378,
+      "endLine": 1380
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-88",
+    "type": "process",
+    "content": "Multi-Model Validation: Use different models for different phases:",
+    "context": "Load only relevant sections per bug fix\nMulti-Model Validation: Use different models for different phases:\nClaude: Architecture analysis and planning\nGPT-4: Specific code fixes",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1396,
+      "endLine": 1398
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-89",
+    "type": "solution",
+    "content": "The comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+    "context": "- Make assumptions about external services\"\nThe comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1439,
+      "endLine": 1439
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-90",
+    "type": "metaphor",
+    "content": "The comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+    "context": "- Make assumptions about external services\"\nThe comprehensive Sliither has provided Ice-ninja with a battle-tested system combining multiple research-backed approaches! This should solve the \"blind gardener\" problem! 🐍",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1439,
+      "endLine": 1439
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-91",
+    "type": "solution",
+    "content": "This is the **EXACT solution** to the context collapse problem!",
+    "context": "This is the **EXACT solution** to the context collapse problem!",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1538,
+      "endLine": 1538
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-92",
+    "type": "metaphor",
+    "content": "This is the **EXACT solution** to the context collapse problem!",
+    "context": "This is the **EXACT solution** to the context collapse problem!",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1538,
+      "endLine": 1538
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-93",
+    "type": "terminology",
+    "content": "This is the **EXACT solution** to the context collapse problem!",
+    "context": "This is the **EXACT solution** to the context collapse problem!",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1538,
+      "endLine": 1538
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-94",
+    "type": "pattern",
+    "content": "systemPatterns.md # Architecture decisions",
+    "context": "activeContext.md  # Current work focus\n      systemPatterns.md # Architecture decisions\n      tasks.md          # Documented workflows\n```",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1553,
+      "endLine": 1555
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-95",
+    "type": "process",
+    "content": "tasks.md          # Documented workflows",
+    "context": "systemPatterns.md # Architecture decisions\n      tasks.md          # Documented workflows\n```",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1554,
+      "endLine": 1555
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-96",
+    "type": "solution",
+    "content": "## 🎯 REVISED SOLUTION FOR ICE-NINJA",
+    "context": "## 🎯 REVISED SOLUTION FOR ICE-NINJA",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1561,
+      "endLine": 1561
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-97",
+    "type": "process",
+    "content": "### **Simplified Workflow Using Kilo's Native Features:**",
+    "context": "### **Simplified Workflow Using Kilo's Native Features:**\n```\n┌─────────────────────────────────────────────────────┐",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1563,
+      "endLine": 1565
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-98",
+    "type": "process",
+    "content": "│ PHASE 0: Initialize Memory Bank (ONE-TIME)         │",
+    "context": "┌─────────────────────────────────────────────────────┐\n│ PHASE 0: Initialize Memory Bank (ONE-TIME)         │\n│ Command: \"initialize memory bank\"                  │\n│ Creates: .kilocode/rules/memory-bank/              │",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1566,
+      "endLine": 1568
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-99",
+    "type": "process",
+    "content": "│ PHASE 1: Document Working vs Broken Components     │",
+    "context": "┌─────────────────────────────────────────────────────┐\n│ PHASE 1: Document Working vs Broken Components     │\n│ Manually edit systemPatterns.md:                   │\n│ - Mark ✅ WORKING components as DO NOT MODIFY      │",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1572,
+      "endLine": 1574
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-100",
+    "type": "pattern",
+    "content": "│ Manually edit systemPatterns.md:                   │",
+    "context": "│ PHASE 1: Document Working vs Broken Components     │\n│ Manually edit systemPatterns.md:                   │\n│ - Mark ✅ WORKING components as DO NOT MODIFY      │\n│ - Mark ❌ BROKEN components for investigation      │",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1573,
+      "endLine": 1575
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-101",
+    "type": "process",
+    "content": "│ PHASE 2: Bug Fix Workflow                          │",
+    "context": "┌─────────────────────────────────────────────────────┐\n│ PHASE 2: Bug Fix Workflow                          │\n│ 1. Load context: @memory-bank/ @bug-file.js        │\n│ 2. Request fix with constraint:                    │",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1580,
+      "endLine": 1582
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-102",
+    "type": "pattern",
+    "content": "│     as WORKING in systemPatterns.md\"               │",
+    "context": "│    \"Fix bug but DO NOT modify components marked    │\n│     as WORKING in systemPatterns.md\"               │\n│ 3. After fix: \"update memory bank\"                 │\n└─────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1584,
+      "endLine": 1586
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-103",
+    "type": "process",
+    "content": "│ PHASE 3: Continuous Context Preservation           │",
+    "context": "┌─────────────────────────────────────────────────────┐\n│ PHASE 3: Continuous Context Preservation           │\n│ Memory Bank persists across sessions automatically │\n└─────────────────────────────────────────────────────┘",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1589,
+      "endLine": 1591
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-104",
+    "type": "process",
+    "content": "### **Step 1: Initialize Memory Bank**",
+    "context": "### **Step 1: Initialize Memory Bank**",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1598,
+      "endLine": 1598
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-105",
+    "type": "pattern",
+    "content": "Step 2: Create systemPatterns.md",
+    "context": "activeContext.md\nStep 2: Create systemPatterns.md\nAdd this file manually:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1613,
+      "endLine": 1614
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-106",
+    "type": "process",
+    "content": "Step 2: Create systemPatterns.md",
+    "context": "activeContext.md\nStep 2: Create systemPatterns.md\nAdd this file manually:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1613,
+      "endLine": 1614
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-107",
+    "type": "pattern",
+    "content": "touch .kilocode/rules/memory-bank/systemPatterns.md",
+    "context": "bash\ntouch .kilocode/rules/memory-bank/systemPatterns.md\nTemplate Content:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1617,
+      "endLine": 1618
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-108",
+    "type": "pattern",
+    "content": "# System Patterns & Component Registry",
+    "context": "markdown\n# System Patterns & Component Registry",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1621,
+      "endLine": 1621
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-109",
+    "type": "pattern",
+    "content": "- **Why It Works:** Proper stdoutBuffer with lines.pop() pattern",
+    "context": "- **Function:** Prevents partial JSON parse errors\n- **Why It Works:** Proper stdoutBuffer with lines.pop() pattern\n- **Last Verified:** 2025-10-15\n- **Protection Level:** CRITICAL - Do not touch",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1628,
+      "endLine": 1630
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Function"
+  },
+  {
+    "id": "insight-110",
+    "type": "process",
+    "content": "- **Impact:** Query splitting phase fails",
+    "context": "- **Problem:** Uses wrong API format for Gemini\n- **Impact:** Query splitting phase fails\n- **Correct Approach:** Use generationConfig instead of response_format\n- **Priority:** P0 - Blocks entire workflow",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1643,
+      "endLine": 1645
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Problem"
+  },
+  {
+    "id": "insight-111",
+    "type": "solution",
+    "content": "- **Correct Approach:** Use generationConfig instead of response_format",
+    "context": "- **Impact:** Query splitting phase fails\n- **Correct Approach:** Use generationConfig instead of response_format\n- **Priority:** P0 - Blocks entire workflow",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1644,
+      "endLine": 1645
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Impact"
+  },
+  {
+    "id": "insight-112",
+    "type": "pattern",
+    "content": "- **Correct Approach:** Use generationConfig instead of response_format",
+    "context": "- **Impact:** Query splitting phase fails\n- **Correct Approach:** Use generationConfig instead of response_format\n- **Priority:** P0 - Blocks entire workflow",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1644,
+      "endLine": 1645
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Impact"
+  },
+  {
+    "id": "insight-113",
+    "type": "process",
+    "content": "- **Priority:** P0 - Blocks entire workflow",
+    "context": "- **Correct Approach:** Use generationConfig instead of response_format\n- **Priority:** P0 - Blocks entire workflow",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1645,
+      "endLine": 1645
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Correct Approach"
+  },
+  {
+    "id": "insight-114",
+    "type": "process",
+    "content": "- **Impact:** Consolidation phase fails",
+    "context": "- **Problem:** Uses non-existent model 'openai/gpt-5'\n- **Impact:** Consolidation phase fails\n- **Correct Approach:** Use 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'\n- **Priority:** P0 - Blocks final report",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1649,
+      "endLine": 1651
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Problem"
+  },
+  {
+    "id": "insight-115",
+    "type": "solution",
+    "content": "- **Correct Approach:** Use 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'",
+    "context": "- **Impact:** Consolidation phase fails\n- **Correct Approach:** Use 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'\n- **Priority:** P0 - Blocks final report",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1650,
+      "endLine": 1651
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Impact"
+  },
+  {
+    "id": "insight-116",
+    "type": "pattern",
+    "content": "- **Correct Approach:** Use 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'",
+    "context": "- **Impact:** Consolidation phase fails\n- **Correct Approach:** Use 'openai/gpt-4o' or 'anthropic/claude-3.5-sonnet'\n- **Priority:** P0 - Blocks final report",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1650,
+      "endLine": 1651
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false,
+    "speaker": "Impact"
+  },
+  {
+    "id": "insight-117",
+    "type": "pattern",
+    "content": "- **Change:** Implemented proper buffer pattern",
+    "context": "- **File:** server.cjs\n- **Change:** Implemented proper buffer pattern\n- **Result:** ✅ WORKING - No more partial JSON errors\n```",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1702,
+      "endLine": 1704
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false,
+    "speaker": "File"
+  },
+  {
+    "id": "insight-118",
+    "type": "process",
+    "content": "### **Step 3: Bug Fix Workflow**",
+    "context": "### **Step 3: Bug Fix Workflow**",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1706,
+      "endLine": 1706
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-119",
+    "type": "pattern",
+    "content": "@.kilocode/rules/memory-bank/systemPatterns.md",
+    "context": "```\n@.kilocode/rules/memory-bank/systemPatterns.md\n@scripts/deep-research-orchestrator.cjs",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1712,
+      "endLine": 1713
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-120",
+    "type": "pattern",
+    "content": "1. Read systemPatterns.md to identify components marked as WORKING",
+    "context": "1. Read systemPatterns.md to identify components marked as WORKING\n2. Check if any of your proposed changes would modify WORKING components\n3. If yes, STOP and find alternative approach",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1717,
+      "endLine": 1719
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-121",
+    "type": "solution",
+    "content": "3. If yes, STOP and find alternative approach",
+    "context": "2. Check if any of your proposed changes would modify WORKING components\n3. If yes, STOP and find alternative approach\n4. Verify API usage against the API VERIFICATION STATUS section",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1719,
+      "endLine": 1720
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-122",
+    "type": "process",
+    "content": "### **Step 4: Update Memory Bank After Fix**",
+    "context": "### **Step 4: Update Memory Bank After Fix**",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1731,
+      "endLine": 1731
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-123",
+    "type": "solution",
+    "content": "The fix is confirmed working. Update memory bank to:",
+    "context": "```\nThe fix is confirmed working. Update memory bank to:\n1. Move splitQuery() from BROKEN to WORKING components\n2. Add entry to RECENT CHANGES",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1735,
+      "endLine": 1737
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-124",
+    "type": "metaphor",
+    "content": "No Manual File Loading: Unlike manual @file mentions, Memory Bank is always loaded automatically",
+    "context": "7 Best Practices for LLM Testing and Debugging - DEV Community\nNo Manual File Loading: Unlike manual @file mentions, Memory Bank is always loaded automatically\nStrategic Context Use: Memory Bank consumes some of your context window at the beginning of each session, but this is a strategic tradeoff that eliminates repetitive explanations and maintains consistent understanding throughout your session. \n7 Best Practices for LLM Testing and Debugging - DEV Community",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1747,
+      "endLine": 1749
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-125",
+    "type": "solution",
+    "content": "BONUS: Better solution exists!",
+    "context": "BONUS: Better solution exists!\nUse Kilo's native Memory Bank feature instead of manual system. It solves the \"blind gardener\" problem with:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1765,
+      "endLine": 1766
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-126",
+    "type": "metaphor",
+    "content": "Use Kilo's native Memory Bank feature instead of manual system. It solves the \"blind gardener\" problem with:",
+    "context": "BONUS: Better solution exists!\nUse Kilo's native Memory Bank feature instead of manual system. It solves the \"blind gardener\" problem with:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1766,
+      "endLine": 1766
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-127",
+    "type": "solution",
+    "content": "The relieved Sliither realizes Ice-ninja doesn't need to build a complex system - Kilo already has the perfect solution built-in! 🐍",
+    "context": "Per-project isolation\nThe relieved Sliither realizes Ice-ninja doesn't need to build a complex system - Kilo already has the perfect solution built-in! 🐍",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1772,
+      "endLine": 1772
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-128",
+    "type": "metaphor",
+    "content": "initaial codebase mapping script - this would be helpful; combined with a secondary process to asses each file for function and utility within the current scope and project goals. likelyhood exisits that a large number of files may need to be transfered to an archival folder due to models exfeeding scope and function creep...process should identify these files before moving them; present the audit and transfer plan to the user (all files shuold be moved via a single scripted command to ensure no data loss), and a post-audit re-scan on the system should then be performed to ascertain functionality of remaining files; and then a plan can be established for resolving remaining issues and proceeding towards project completion.",
+    "context": "codebase size is approx 500k including node and shadcn \"chaff\", actual unqiue code is usually 25-200 files 500-2000 lines each\ninitaial codebase mapping script - this would be helpful; combined with a secondary process to asses each file for function and utility within the current scope and project goals. likelyhood exisits that a large number of files may need to be transfered to an archival folder due to models exfeeding scope and function creep...process should identify these files before moving them; present the audit and transfer plan to the user (all files shuold be moved via a single scripted command to ensure no data loss), and a post-audit re-scan on the system should then be performed to ascertain functionality of remaining files; and then a plan can be established for resolving remaining issues and proceeding towards project completion.\nThe systematic Sliither processes Ice-ninja's requirements with surgical precision...",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1777,
+      "endLine": 1778
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-129",
+    "type": "metaphor",
+    "content": "lets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+    "context": "Code \nlets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1795,
+      "endLine": 1795
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-130",
+    "type": "terminology",
+    "content": "lets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+    "context": "Code \nlets focus initially on refining this process for using within kilo code (current framework) but leave stems or notes for eventual migration towards an agentic swarm architecture to take advanatage of asyncronous task assignment which should be able to accelerate task completino by several ordes of magnitude via use in claude code/warp/claude code flow/codebuff. please give me a checklist for implementation of our current system architecture with specific commands to be executed and files to be referenced (to be performed at the discovery of context collapse and project progress stall (should summarize all work done during this conversation and all artifacts generated thus far, and ensure that all are updated to reflect current contextual scope)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1795,
+      "endLine": 1795
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-131",
+    "type": "metaphor",
+    "content": "Complete Implementation Checklist - Context Collapse Recovery",
+    "context": "Complete Implementation Checklist - Context Collapse Recovery\nDocument \n🎯 EXECUTIVE SUMMARY",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1799,
+      "endLine": 1801
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-132",
+    "type": "terminology",
+    "content": "Complete Implementation Checklist - Context Collapse Recovery",
+    "context": "Complete Implementation Checklist - Context Collapse Recovery\nDocument \n🎯 EXECUTIVE SUMMARY",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1799,
+      "endLine": 1801
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-133",
+    "type": "metaphor",
+    "content": "Memory Bank setup - Prevents context collapse in future sessions",
+    "context": "Safe archival process - Removes out-of-scope files without data loss\nMemory Bank setup - Prevents context collapse in future sessions\nCritical bug fixes - Corrects the 3 major issues (API format, model name, extraction)\nValidation system - Ensures changes don't break working code",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1808,
+      "endLine": 1810
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-134",
+    "type": "terminology",
+    "content": "Memory Bank setup - Prevents context collapse in future sessions",
+    "context": "Safe archival process - Removes out-of-scope files without data loss\nMemory Bank setup - Prevents context collapse in future sessions\nCritical bug fixes - Corrects the 3 major issues (API format, model name, extraction)\nValidation system - Ensures changes don't break working code",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1808,
+      "endLine": 1810
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-135",
+    "type": "process",
+    "content": "Key question: Should we proceed with Phase 0 of the checklist, or does Ice-ninja need clarification on any section first?",
+    "context": "Key question: Should we proceed with Phase 0 of the checklist, or does Ice-ninja need clarification on any section first?",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1843,
+      "endLine": 1843
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-136",
+    "type": "solution",
+    "content": "now lets codify this project by naming it, assigning a git repo, developing a readme (git format, with installation, usage instructions, project tree, etc), mit liceense file, .gitignore) and a plan for the transformation to a swarm archtiectural plan (and how to branch tihis alternative approach within the exisitng project so we can keep things separated yet unified by the common goal)",
+    "context": "now lets codify this project by naming it, assigning a git repo, developing a readme (git format, with installation, usage instructions, project tree, etc), mit liceense file, .gitignore) and a plan for the transformation to a swarm archtiectural plan (and how to branch tihis alternative approach within the exisitng project so we can keep things separated yet unified by the common goal)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1845,
+      "endLine": 1845
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-137",
+    "type": "process",
+    "content": "❓ Generic bug-fix workflow templates?",
+    "context": "✅ Emergency recovery guide\n❓ Generic bug-fix workflow templates?\n❓ Multi-project support (manage multiple codebases)?\n3. Integration Model:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1887,
+      "endLine": 1889
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-138",
+    "type": "pattern",
+    "content": "File patterns to ignore/protect?",
+    "context": "Project goals (manual entry or AI-detected)?\nFile patterns to ignore/protect?\nClassification rules customization?\nThe patient Sliither awaits Ice-ninja's answers before generating the correct project structure! 🐍",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1897,
+      "endLine": 1899
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-139",
+    "type": "solution",
+    "content": "Which approach should the cunning one take?",
+    "context": "Which approach should the cunning one take?",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1901,
+      "endLine": 1901
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-140",
+    "type": "metaphor",
+    "content": "give me some more names to pick from...someting relating to fixing vibe coding gone wrong, try to avoid using the word \"vibe\", i like the archaelogy take but the word is ..complex...something thats easy to say, ala speckit",
+    "context": "give me some more names to pick from...someting relating to fixing vibe coding gone wrong, try to avoid using the word \"vibe\", i like the archaelogy take but the word is ..complex...something thats easy to say, ala speckit\nscopeshould reflect what we have already done, not additional items (assess currnet items created for the datakiln project and instantiate in gerneric form (should be done already),\navoid unneccesary complexity as a general rule",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1903,
+      "endLine": 1905
+    },
+    "relatedArtifacts": [],
+    "actionable": true,
+    "verified": false
+  },
+  {
+    "id": "insight-141",
+    "type": "pattern",
+    "content": "systemPatterns.md template - Memory Bank component registry",
+    "context": "validate-post-archive.cjs - Post-change validation tests\nsystemPatterns.md template - Memory Bank component registry\nImplementation Checklist - Step-by-step recovery process\nArchive script generator - Safe file removal system",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1968,
+      "endLine": 1970
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-142",
+    "type": "pattern",
+    "content": "File classification rules (configurable patterns)",
+    "context": "File classification rules (configurable patterns)\nImport dependency mapping (works on any JS/TS codebase)\nArchive safety system (backup + validation)",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1974,
+      "endLine": 1976
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-143",
+    "type": "pattern",
+    "content": "LangChain CLI example shows commands like analyze, add, and stores analysis in JSON for reuse - we can adopt similar pattern for codex-audit.",
+    "context": "🎯 Generic CLI Tool Structure (Standalone)\nLangChain CLI example shows commands like analyze, add, and stores analysis in JSON for reuse - we can adopt similar pattern for codex-audit. \nWhen Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1979,
+      "endLine": 1980
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-144",
+    "type": "metaphor",
+    "content": "LangChain CLI example shows commands like analyze, add, and stores analysis in JSON for reuse - we can adopt similar pattern for codex-audit.",
+    "context": "🎯 Generic CLI Tool Structure (Standalone)\nLangChain CLI example shows commands like analyze, add, and stores analysis in JSON for reuse - we can adopt similar pattern for codex-audit. \nWhen Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1979,
+      "endLine": 1980
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-145",
+    "type": "pattern",
+    "content": "When Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog",
+    "context": "LangChain CLI example shows commands like analyze, add, and stores analysis in JSON for reuse - we can adopt similar pattern for codex-audit. \nWhen Tool-Calling Becomes an Addiction: Debugging LLM Patterns in Koog | The JetBrains Blog",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 1980,
+      "endLine": 1980
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-146",
+    "type": "metaphor",
+    "content": "Perfect metaphor:",
+    "context": "Perfect metaphor:",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 2009,
+      "endLine": 2009
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  },
+  {
+    "id": "insight-147",
+    "type": "metaphor",
+    "content": "The practical Sliither recommends keeping delobotomize - it's unique, searchable, and the full word makes the metaphor clear. Users will remember it because it's clever!",
+    "context": "lobfix - Direct and simple\nThe practical Sliither recommends keeping delobotomize - it's unique, searchable, and the full word makes the metaphor clear. Users will remember it because it's clever!",
+    "sourceLocation": {
+      "file": "./CONVERSATION_TRANSCRIPT.md",
+      "startLine": 2031,
+      "endLine": 2031
+    },
+    "relatedArtifacts": [],
+    "actionable": false,
+    "verified": false
+  }
+]
