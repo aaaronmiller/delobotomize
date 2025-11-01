@@ -137,3 +137,4 @@ public
 
 # Yarn Integrity file
 .yarn-integrity
+.worktrees/
