@@ -350,42 +350,106 @@ program
     }
   });
 
-// Orchestrate command
+// Orchestrate command - LLM-driven automation
 program
   .command('triage')
-  .description('Execute full triage process with narrative reporting')
-  .argument('<path>', 'Path to project to triage')
-  .option('-r, --no-report', 'Skip detailed narrative report generation')
-  .option('-a, --automated', 'Run in automated mode with minimal output')
-  .action(async (projectPath, options) => {
+  .description('Execute intelligent triage with automated decision making')
+  .argument('[path]', 'Project path to triage', process.cwd())
+  .option('-i, --interactive', 'Interactive mode for manual decisions', false)
+  .option('-a, --auto', 'Fully automated mode (default)', false)
+  .option('--dry-run', 'Analyze only, no changes', false)
+  .option('--fix-method <method>', 'Fix method: diff|full', '')
+  .option('--model <model>', 'Force specific model', '')
+  .option('--batch-size <size>', 'Files per batch', '100')
+  .option('-r, --no-report', 'Skip narrative report', false)
+  .option('--fragile', 'Extra cautious mode', false)
+  .action(async (args, options) => {
+    const { CLIAutomator } = await import('../services/cli-automator');
     const { DelobotomizeOrchestrator } = await import('../orchestration/orchestrator');
     const { TriageNarrator } = await import('../orchestration/triage-narrator');
 
-    const spinner = ora('🎭 Orchestrating triage process...').start();
+    const spinner = ora('🧠 Analyzing project needs...');
+    let automation = null;
 
-    try {
+    // If automated mode or too many flags, use LLM automation
+    if (options.auto || (!options.interactive && Object.keys(options).length === 1)) {
+      spinner.text = '🤖 LLM optimizing command...';
+
+      try {
+        const automator = new CLIAutomator(await LLMProviderFactory.createFromEnv());
+        automation = await automator.automateTriage({
+          projectPath: args,
+          flags: options
+        });
+
+        spinner.succeed(chalk.green('Command optimized'));
+        console.log(chalk.blue(`Recommended: ${automation.command}`));
+        console.log(chalk.gray(`Reasoning: ${automation.reasoning.substring(0, 200)}...`));
+
+        if (automation.warnings) {
+          console.log(chalk.yellow('\n⚠️  Warnings:'));
+          automation.warnings.forEach(w => console.log(`   ${w}`));
+        }
+
+        // Execute recommended command unless user specified alternatives
+        const finalCommand = automation.command;
+        spinner.start('🎭 Running optimized triage...');
+
+        // Actually run triage with optimized parameters
+        const orchestrator = new DelobotomizeOrchestrator();
+        const result = await orchestrator.execute(args, {
+          generateReport: options.report !== false,
+          automated: true,
+          fixMethod: options.fixMethod || automation.metadata?.detectedModel?.includes('gemini') ? 'full' : 'diff',
+          batchSize: parseInt(options.batchSize) || automation.metadata?.estimatedDuration ? Math.floor(300 / automation.metadata.estimatedDuration) : 100,
+          fragile: options.fragile || false
+        });
+
+        if (result.success) {
+          spinner.succeed(chalk.green('Automated triage complete!'));
+          console.log(chalk.blue(result.summary));
+
+          // Show cost estimate vs actual
+          if (automation.metadata?.estimatedCost) {
+            console.log(chalk.gray(`\n💰 Cost estimate: $${automation.metadata.estimatedCost}`));
+          }
+        } else {
+          spinner.fail(chalk.red('Automated triage failed'));
+          console.log(chalk.red(result.summary));
+        }
+      } catch (error: any) {
+        spinner.fail(chalk.red('LLM optimization failed'));
+        console.error(error.message);
+
+        // Fallback to manual execution
+        spinner.start('🎭 Running triage with manual defaults...');
+        await executeManualTriage(args, options);
+      }
+    } else {
+      // Manual mode - just execute with provided options
+      await executeManualTriage(args, options);
+    }
+
+    /**
+     * Manual triage execution fallback
+     */
+    async function executeManualTriage(projectPath: string, options: any) {
       const orchestrator = new DelobotomizeOrchestrator();
       const result = await orchestrator.execute(projectPath, {
         generateReport: options.report !== false,
-        automated: options.automated
+        automated: options.interactive ? false : true,
+        fixMethod: options.fixMethod || 'diff',
+        batchSize: parseInt(options.batchSize) || 100,
+        fragile: options.fragile || false
       });
 
       if (result.success) {
         spinner.succeed(chalk.green('Triage complete!'));
         console.log(chalk.blue(result.summary));
-
-        if (result.narrative) {
-          console.log(chalk.yellow('\nQuick Summary:'));
-          const narrator = new TriageNarrator(projectPath); // Create instance for summary
-          console.log(narrator.getSummary() || 'No summary available');
-        }
       } else {
         spinner.fail(chalk.red('Triage failed'));
         console.log(chalk.red(result.summary));
       }
-    } catch (error: any) {
-      spinner.fail(chalk.red('Orchestration error'));
-      console.error(error.message);
     }
   });
 
@@ -556,6 +620,46 @@ program
     } catch (error: any) {
       console.error(chalk.red('Memory command failed'));
       console.error(error.message);
+    }
+  });
+
+// UI command - start web interface
+program
+  .command('ui')
+  .description('Start web interface for monitoring audits')
+  .argument('[path]', 'Project path to monitor', process.cwd())
+  .option('-p, --port <port>', 'Port to run on', '3000')
+  .option('--host <host>', 'Host to bind to', 'localhost')
+  .option('--auto', 'Auto-start monitoring', false)
+  .action(async (projectPath, options) => {
+    const { WebUIServer } = await import('../ui/server');
+
+    const spinner = ora('Starting Web UI...').start();
+
+    try {
+      const server = new WebUIServer({
+        projectPath,
+        port: parseInt(options.port) || 3000,
+        host: options.host || 'localhost',
+        autoStart: options.auto || false
+      });
+
+      await server.start();
+
+      spinner.succeed(chalk.green(`Web UI running at http://${options.host || 'localhost'}:${options.port}`));
+      console.log(chalk.blue(`\n💡 Monitoring project: ${projectPath}`));
+      console.log(chalk.gray('Press Ctrl+C to stop\n'));
+
+      // Handle graceful shutdown
+      process.on('SIGINT', async () => {
+        console.log(chalk.yellow('\n🔴 Shutting down Web UI...'));
+        await server.stop();
+        process.exit(0);
+      });
+    } catch (error: any) {
+      spinner.fail(chalk.red('Failed to start Web UI'));
+      console.error(error.message);
+      process.exit(1);
     }
   });
 

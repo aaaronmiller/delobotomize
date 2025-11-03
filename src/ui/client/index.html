@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delobotomize - Audit Monitor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --accent: #38bdf8;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --critical: #b91c1c;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 300px 1fr 300px;
+      gap: 20px;
+      height: 100vh;
+    }
+
+    /* Panels */
+    .panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .panel h2 {
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Status Panel */
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .status-scanning { background: var(--warning); }
+    .status-analyzing { background: var(--accent); }
+    .status-fixing { background: var(--warning); }
+    .status-complete { background: var(--success); }
+    .status-failed { background: var(--error); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Main Content */
+    .main-content {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 20px;
+    }
+
+    .narrative-view {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .narrative-section {
+      margin-bottom: 30px;
+    }
+
+    .narrative-section h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      background: var(--bg-primary);
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--text-primary);
+    }
+
+    .metric-label {
+      font-size: 0.9em;
+      color: var(--text-secondary);
+    }
+
+    /* Issues List */
+    .issues-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .issue-item {
+      background: var(--bg-primary);
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border-left: 4px solid;
+    }
+
+    .issue-critical { border-left-color: var(--critical); }
+    .issue-high { border-left-color: var(--error); }
+    .issue-medium { border-left-color: var(--warning); }
+    .issue-low { border-left-color: var(--text-secondary); }
+
+    .issue-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .issue-status {
+      font-size: 0.8em;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: var(--bg-secondary);
+    }
+
+    /* Operations Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+      background: var(--bg-primary);
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 15px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-time {
+      font-size: 0.9em;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0ea5e9;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-secondary);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Session Selector */
+    .session-selector {
+      margin-bottom: 20px;
+    }
+
+    .session-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .session-item:hover {
+      background: var(--bg-primary);
+    }
+
+    .session-item.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      padding: 10px 20px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Restore Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .modal-header {
+      margin-bottom: 20px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .container {
+        grid-template-columns: 250px 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Panel: Sessions & Actions -->
+    <div class="panel">
+      <h2>Sessions</h2>
+      <div id="session-list" class="session-selector">
+        <div class="spinner"></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="createBackup()">
+          📦 Create Backup
+        </button>
+        <button class="btn btn-secondary" onclick="refreshData()">
+          🔄 Refresh
+        </button>
+      </div>
+    </div>
+
+    <!-- Center: Main Content -->
+    <div class="main-content">
+      <div class="panel">
+        <h2>
+          <span id="current-session">Loading...</span>
+          <span id="status-indicator" class="status-indicator status-scanning"></span>
+        </h2>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active" onclick="showTab('narrative')">Narrative</div>
+          <div class="tab" onclick="showTab('timeline')">Timeline</div>
+          <div class="tab" onclick="showTab('metrics')">Metrics</div>
+        </div>
+
+        <!-- Narrative View -->
+        <div id="narrative-tab" class="narrative-view">
+          <div class="spinner"></div>
+        </div>
+
+        <!-- Timeline View -->
+        <div id="timeline-tab" class="narrative-view" style="display:none">
+          <div class="timeline">
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <!-- Metrics View -->
+        <div id="metrics-tab" class="narrative-view" style="display:none">
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-value" id="metric-files">0</div>
+              <div class="metric-label">Files Scanned</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" id="metric-issues">0</div>
+              <div class="metric-label">Issues Found</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" id="metric-fixed">0</div>
+              <div class="metric-label">Issues Fixed</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" id="metric-cost">$0.00</div>
+              <div class="metric-label">Total Cost</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Structure & Logs -->
+    <div class="panel">
+      <h2>Project Structure</h2>
+      <div id="project-structure">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Restore Modal -->
+  <div id="restore-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Restore from Backup</h3>
+        <p>Select a backup to restore from:</p>
+      </div>
+      <div id="backup-list">
+        <div class="spinner"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeRestoreModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmRestore()" id="confirm-restore-btn">Restore</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
